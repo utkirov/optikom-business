@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useState } from '#app'
 import ScrollFade from './ScrollFade.vue'
 import { Server, Wifi, ShieldCheck, Monitor, Calculator, Zap, ArrowRight, PlusCircle, CheckCircle2 } from 'lucide-vue-next'
 
@@ -50,6 +51,18 @@ const toggleService = (id: string) => {
     selectedServices.value.push(id)
   } else {
     selectedServices.value.splice(index, 1)
+  }
+}
+
+// Pass state to form
+const savedTariffData = useState('tariffDetails', () => null as any)
+const saveAndScrollToForm = (e: Event) => {
+  // Save current calculator state for the contact form
+  savedTariffData.value = {
+    internet: selectedSpeed.value.label,
+    itService: `Аутсорсинг (${deviceCount.value} ПК)${slaPremium.value ? ' + Premium SLA' : ''}`,
+    extraServices: selectedServices.value.map(id => services.find(s => s.id === id)?.label || id),
+    totalPrice: formatPrice(totalAbonentCost.value)
   }
 }
 </script>
@@ -231,7 +244,7 @@ const toggleService = (id: string) => {
                   </div>
                 </div>
 
-                <a href="#contact" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 text-white rounded-[1.25rem] font-bold text-center transition-all shadow-lg hover:shadow-[0_0_20px_rgba(84,99,255,0.4)] hover:-translate-y-1 flex items-center justify-center space-x-2">
+                <a href="#contact" @click="saveAndScrollToForm" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 text-white rounded-[1.25rem] font-bold text-center transition-all shadow-lg hover:shadow-[0_0_20px_rgba(84,99,255,0.4)] hover:-translate-y-1 flex items-center justify-center space-x-2">
                   <span>Обсудить детали</span>
                   <ArrowRight class="w-5 h-5" />
                 </a>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import ScrollFade from './ScrollFade.vue'
 import { Wifi, PhoneCall, CheckCircle2, AlertCircle, Loader2 } from 'lucide-vue-next'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useState } from '#app'
 
 const targetAudience = [
   'Малый и средний бизнес', 'Офисные компании', 'Call-центры',
@@ -11,12 +12,32 @@ const targetAudience = [
 // Form state
 const name = ref('')
 const phone = ref('')
+const savedTariffData = useState('tariffDetails', () => null)
+
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 const status = ref<FormStatus>('idle')
 const errorMessage = ref('')
 
+// Phone mask handler (+998 (XX) XXX-XX-XX)
+const handlePhoneInput = (e: Event) => {
+  const target = e.target as HTMLInputElement
+  let v = target.value.replace(/\D/g, '')
+  if (v.startsWith('998')) v = v.substring(3)
+  
+  let res = '+998'
+  if (v.length > 0) res += ' (' + v.substring(0, 2)
+  if (v.length > 2) res += ') ' + v.substring(2, 5)
+  if (v.length > 5) res += '-' + v.substring(5, 7)
+  if (v.length > 7) res += '-' + v.substring(7, 9)
+  
+  phone.value = res
+}
+
 // Client-side validation
-const isValid = computed(() => name.value.trim().length >= 2 && phone.value.trim().length >= 7)
+const isValid = computed(() => {
+  const digitsOnly = phone.value.replace(/\D/g, '')
+  return name.value.trim().length >= 2 && digitsOnly.length === 12
+})
 
 async function submitForm() {
   if (!isValid.value || status.value === 'loading') return
@@ -27,11 +48,16 @@ async function submitForm() {
   try {
     await $fetch('/api/contact', {
       method: 'POST',
-      body: { name: name.value.trim(), phone: phone.value.trim() },
+      body: { 
+        name: name.value.trim(), 
+        phone: phone.value.trim(),
+        tariffDetails: savedTariffData.value 
+      },
     })
     status.value = 'success'
     name.value = ''
     phone.value = ''
+    savedTariffData.value = null // clear selected tariff on success
   } catch (err: unknown) {
     status.value = 'error'
     errorMessage.value = 'Не удалось отправить заявку. Пожалуйста, попробуйте снова или позвоните нам.'
@@ -134,9 +160,10 @@ async function submitForm() {
                 </div>
                 <div>
                   <input
-                    v-model="phone"
+                    :value="phone"
+                    @input="handlePhoneInput"
                     type="tel"
-                    placeholder="Ваш номер телефона"
+                    placeholder="+998 (__) ___-__-__"
                     :disabled="status === 'loading'"
                     class="w-full px-6 py-5 bg-white/10 border border-white/10 rounded-[1.25rem] focus:outline-none focus:border-indigo-400 focus:bg-white/15 transition-all text-white placeholder-indigo-100/40 text-sm backdrop-blur-md disabled:opacity-50"
                   />

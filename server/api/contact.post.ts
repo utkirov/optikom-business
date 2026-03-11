@@ -2,7 +2,7 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const body = await readBody(event)
 
-  const { name, phone } = body
+  const { name, phone, tariffDetails } = body
 
   if (!name || !phone) {
     throw createError({ statusCode: 400, statusMessage: 'Name and phone are required' })
@@ -15,14 +15,24 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 500, statusMessage: 'Telegram credentials not configured' })
   }
 
-  const text = `
+  let text = `
 🔔 <b>Новая заявка с сайта Optikom Business</b>
 
 👤 <b>Имя / Компания:</b> ${escapeHtml(name)}
 📞 <b>Телефон:</b> ${escapeHtml(phone)}
+`
 
-🕐 <i>${new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tashkent' })}</i>
-`.trim()
+  if (tariffDetails) {
+    text += `\n🛒 <b>Выбранный тариф:</b>\n`
+    text += `• Интернет: ${escapeHtml(tariffDetails.internet)}\n`
+    text += `• IT Обслуживание: ${escapeHtml(tariffDetails.itService)}\n`
+    if (tariffDetails.extraServices && tariffDetails.extraServices.length > 0) {
+      text += `• Доп. услуги: ${escapeHtml(tariffDetails.extraServices.join(', '))}\n`
+    }
+    text += `💰 <b>Итого абонплата:</b> ${escapeHtml(tariffDetails.totalPrice)} сум\n`
+  }
+
+  text += `\n🕐 <i>${new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tashkent' })}</i>`
 
   const url = `https://api.telegram.org/bot${token}/sendMessage`
 
