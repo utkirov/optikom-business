@@ -15,8 +15,10 @@ const isMobileMenuOpen = ref(false)
          :class="isScrolled ? 'bg-indigo-950/90 backdrop-blur-lg shadow-xl py-4 border-b border-indigo-500/20' : 'bg-transparent pt-6 pb-4'">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <div class="flex items-center space-x-2">
-          <Wifi class="w-6 h-6 text-indigo-400" />
-          <span class="text-xl font-bold tracking-tight text-white italic">Optikom<span class="text-indigo-400">.Biz</span></span>
+          <div class="p-1.5 bg-indigo-500 rounded-lg shadow-lg shadow-indigo-500/20">
+            <Wifi class="w-5 h-5 text-white" />
+          </div>
+          <span class="text-xl font-bold tracking-tight text-white">Optikom<span class="text-indigo-500">.Biz</span></span>
         </div>
         
         <!-- Desktop Menu -->

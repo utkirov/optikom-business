@@ -34,26 +34,27 @@ const toggleFaq = (index: number) => {
 </script>
 
 <template>
-  <section class="py-24 bg-white">
+  <section class="py-24 bg-gray-950 border-t border-white/5">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollFade>
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold text-slate-900 mb-4">Часто задаваемые вопросы</h2>
-          <p class="text-slate-500">Отвечаем на главные вопросы об управляемом IT-сервисе.</p>
+          <h2 class="text-3xl font-bold text-white mb-4">Часто задаваемые вопросы</h2>
+          <p class="text-slate-400">Отвечаем на главные вопросы об управляемом IT-сервисе.</p>
         </div>
         
         <div class="space-y-4">
           <div v-for="(faq, index) in faqs" :key="index" 
-               class="border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300"
-               :class="faq.isOpen ? 'bg-indigo-50/30 shadow-md' : 'bg-white hover:border-indigo-300'">
-            <button @click="toggleFaq(index)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none">
-              <span class="font-bold text-slate-800 pr-4">{{ faq.q }}</span>
-              <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0">
-                <Plus v-if="!faq.isOpen" class="w-4 h-4 text-indigo-600" />
-                <Minus v-else class="w-4 h-4 text-indigo-600" />
+               class="border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-sm"
+               :class="faq.isOpen ? 'bg-indigo-950/20 shadow-2xl border-indigo-500/20' : 'bg-gray-900/40 hover:border-indigo-500/30'">
+            <button @click="toggleFaq(index)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none group">
+              <span class="font-bold text-slate-200 pr-4 transition-colors group-hover:text-white">{{ faq.q }}</span>
+              <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-white/10 transition-colors"
+                   :class="faq.isOpen ? 'bg-indigo-500 text-white border-indigo-500' : 'bg-gray-950 text-slate-500 group-hover:border-indigo-500/50 group-hover:text-indigo-400'">
+                <Plus v-if="!faq.isOpen" class="w-4 h-4" />
+                <Minus v-else class="w-4 h-4" />
               </div>
             </button>
-            <div v-show="faq.isOpen" class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+            <div v-show="faq.isOpen" class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
               {{ faq.a }}
             </div>
           </div>

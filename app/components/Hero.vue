@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useFetch } from '#app'
 import ScrollFade from './ScrollFade.vue'
 import { ShieldCheck, Network } from 'lucide-vue-next'
+
+const { data: settings } = await useFetch('/api/settings', { key: 'site-settings' })
 </script>
 
 <template>
@@ -22,16 +25,15 @@ import { ShieldCheck, Network } from 'lucide-vue-next'
         <!-- Main Headline -->
         <div class="text-center max-w-5xl mb-12 relative z-10 w-full">
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-white mb-6 tracking-tight leading-[1.1]">
-            Optikom Business <br/> 
-            <span class="text-indigo-400">IT и связь для бизнеса под ключ</span>
+            <span v-html="settings?.hero?.title"></span>
           </h1>
           <p class="text-lg md:text-xl text-indigo-200/90 max-w-3xl mx-auto mt-6 leading-relaxed">
-            Интернет, внешняя IT-поддержка, обслуживание инфраструктуры и корпоративные решения в формате единой абонентской услуги.
+            {{ settings?.hero?.description }}
           </p>
           
           <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contact" class="w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-indigo-500 hover:bg-indigo-400 text-white rounded-full font-bold transition-all shadow-[0_0_30px_-5px_rgba(84,99,255,0.4)] hover:-translate-y-1">
-              <span>Получить консультацию</span>
+            <a :href="settings?.hero?.buttonLink" class="w-full sm:w-auto flex items-center justify-center space-x-2 px-8 py-4 bg-indigo-500 hover:bg-indigo-400 text-white rounded-full font-bold transition-all shadow-[0_0_30px_-5px_rgba(84,99,255,0.4)] hover:-translate-y-1">
+              <span>{{ settings?.hero?.buttonText }}</span>
             </a>
             <a href="#tariffs" class="w-full sm:w-auto flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full font-bold transition-all backdrop-blur-md hover:-translate-y-1">
               Подобрать тариф
@@ -68,8 +70,8 @@ import { ShieldCheck, Network } from 'lucide-vue-next'
     <!-- Bottom Diagonal Transition Curve -->
     <div class="absolute bottom-[-2px] left-0 w-full overflow-hidden leading-[0]">
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-24 sm:h-32 translate-y-1">
-          <path d="M1200 0L0 120V120H1200V0Z" class="fill-slate-50"></path>
-          <path d="M0 60L600 120L1200 60L1200 120L0 120V60Z" class="fill-slate-50 opacity-50"></path>
+          <path d="M1200 0L0 120V120H1200V0Z" class="fill-gray-950"></path>
+          <path d="M0 60L600 120L1200 60L1200 120L0 120V60Z" class="fill-gray-950 opacity-10"></path>
       </svg>
     </div>
   </header>

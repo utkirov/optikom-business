@@ -28,9 +28,19 @@ export default defineNuxtConfig({
       ]
     }
   },
+  nitro: {
+    storage: {
+      db: {
+        driver: 'fs',
+        base: './.data/db'
+      }
+    }
+  },
   runtimeConfig: {
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
     telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
+    adminPassword: process.env.ADMIN_PASSWORD || '123456',
+    jwtSecret: process.env.JWT_SECRET || 'super-secret-key-for-optikom',
   }
 })
 
