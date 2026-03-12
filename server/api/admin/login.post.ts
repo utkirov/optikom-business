@@ -9,7 +9,8 @@ export default defineEventHandler(async (event) => {
   }
 
   const storage = useStorage('db')
-  const storedPassword = await storage.getItem('admin_password') as string || config.adminPassword
+  const storedValue = await storage.getItem('admin_password')
+  const storedPassword = String(storedValue || config.adminPassword)
 
   if (body.password !== storedPassword) {
     throw createError({ statusCode: 401, statusMessage: 'Неверный пароль' })
