@@ -4,12 +4,48 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxtjs/seo',
+    '@nuxt/icon'
   ],
+  site: {
+    url: 'https://optikom.biz',
+    name: 'Optikom Business',
+    description: 'Управляемые IT и телеком услуги в Узбекистане',
+    defaultLocale: 'ru',
+  },
+  experimental: {
+    appManifest: false
+  },
+//   seo: {
+//     fallbackTitle: 'Optikom Business — IT для Вашего Бизнеса',
+//   },
+  ogImage: {
+    enabled: false as any,
+  },
+//   sitemap: {
+//     hostname: 'https://optikom.biz' as any
+//   },
+  i18n: {
+    locales: [
+      { code: 'ru', name: 'Русский', file: 'ru.json' },
+      { code: 'uz', name: 'O\'zbekcha', file: 'uz.json' },
+      { code: 'en', name: 'English', file: 'en.json' }
+    ],
+    defaultLocale: 'ru',
+    strategy: 'prefix_except_default',
+    langDir: '../i18n/locales/'
+  },
+  build: {
+    transpile: []
+  },
   googleFonts: {
     families: {
       Montserrat: [300, 400, 500, 600, 700, 800],
-      Orbitron: [700]
+      Orbitron: [700],
+      Outfit: [300, 400, 500, 600, 700, 800, 900]
     }
   },
   app: {

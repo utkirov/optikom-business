@@ -1,35 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { PhPlus, PhMinus } from '@phosphor-icons/vue'
+import { ref, computed } from 'vue'
 import ScrollFade from './ScrollFade.vue'
-import { Plus, Minus } from 'lucide-vue-next'
+import { useI18n } from '#imports'
 
-const faqs = ref([
-  {
-    q: 'У нас уже есть свой системный администратор. Зачем нам Optikom?',
-    a: 'Мы не обязательно заменяем вашего сисадмина. Мы можем взять на себя рутину: поддержку пользователей, мониторинг сети и резервирование каналов, чтобы ваш специалист сфокусировался на развитии IT-архитектуры бизнеса.',
-    isOpen: true
-  },
-  {
-    q: 'Если пропадет интернет, как быстро вы решите проблему?',
-    a: 'Корпоративные тарифы включают SLA с гарантированным временем реакции от 15 минут. Благодаря резервированию каналов, обрыв на одной линии пройдет для вас незаметно — трафик автоматически перейдет на запасную.',
-    isOpen: false
-  },
-  {
-    q: 'Предоставляете ли вы оборудование в аренду?',
-    a: 'Да, во многих пакетах "Всё включено" мы используем собственные Enterprise-роутеры и коммутаторы, снимая с вас капитальные затраты.',
-    isOpen: false
-  },
-  {
-    q: 'Что будет, если мы забудем оплатить счет?',
-    a: 'Абонентская плата фиксирована, без скрытых платежей. Если вы забыли оплатить — мы предоставляем "доверительный платеж" в 1 клик, чтобы ваш офис не остался без связи в критический момент.',
-    isOpen: false
+const { tm, rt } = useI18n()
+
+// We'll prioritize translations from the locale files for static FAQs
+const faqs = computed(() => {
+  const localizedFaqs = tm('faqs.items') as any[]
+  if (localizedFaqs && localizedFaqs.length > 0) {
+    return localizedFaqs
   }
-])
+  return []
+})
+
+const openIndex = ref<number | null>(0)
 
 const toggleFaq = (index: number) => {
-  if (faqs.value[index]) {
-    faqs.value[index].isOpen = !faqs.value[index].isOpen
-  }
+  openIndex.value = openIndex.value === index ? null : index
 }
 </script>
 
@@ -38,28 +27,43 @@ const toggleFaq = (index: number) => {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <ScrollFade>
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold text-white mb-4">Часто задаваемые вопросы</h2>
-          <p class="text-slate-400">Отвечаем на главные вопросы об управляемом IT-сервисе.</p>
-        </div>
-        
-        <div class="space-y-4">
-          <div v-for="(faq, index) in faqs" :key="index" 
-               class="border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-sm"
-               :class="faq.isOpen ? 'bg-indigo-950/20 shadow-2xl border-indigo-500/20' : 'bg-gray-900/40 hover:border-indigo-500/30'">
-            <button @click="toggleFaq(index)" class="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none group">
-              <span class="font-bold text-slate-200 pr-4 transition-colors group-hover:text-white">{{ faq.q }}</span>
-              <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-white/10 transition-colors"
-                   :class="faq.isOpen ? 'bg-indigo-500 text-white border-indigo-500' : 'bg-gray-950 text-slate-500 group-hover:border-indigo-500/50 group-hover:text-indigo-400'">
-                <Plus v-if="!faq.isOpen" class="w-4 h-4" />
-                <Minus v-else class="w-4 h-4" />
-              </div>
-            </button>
-            <div v-show="faq.isOpen" class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
-              {{ faq.a }}
-            </div>
-          </div>
+          <h2 class="text-3xl md:text-5xl font-sans font-bold text-white mb-6">{{ $t('faqs.title') }}</h2>
+          <p class="text-slate-400">{{ $t('faqs.subtitle') }}</p>
         </div>
       </ScrollFade>
+      
+      <div class="space-y-4">
+        <ScrollFade v-for="(faq, index) in faqs" :key="index" :delay="index * 100">
+          <div class="bg-gray-900/40 rounded-3xl border border-white/5 overflow-hidden transition-all hover:bg-gray-900 shadow-2xl backdrop-blur-sm group">
+            <button 
+              @click="toggleFaq(index)"
+              class="w-full px-8 py-6 text-left flex items-center justify-between focus:outline-none"
+            >
+              <span class="text-lg font-bold text-slate-200 group-hover:text-white transition-colors">{{ rt(faq.question) }}</span>
+              <div class="flex items-center space-x-4">
+                <div class="flex items-center justify-center w-8 h-8 rounded-full border border-white/10 group-hover:border-indigo-500/50 transition-colors">
+                  <PhPlus v-if="openIndex !== index" class="w-4 h-4 text-slate-400 group-hover:text-indigo-400" />
+                  <PhMinus v-else class="w-4 h-4 text-indigo-400" />
+                </div>
+              </div>
+            </button>
+            <transition
+              enter-active-class="transition duration-300 ease-out"
+              enter-from-class="transform -translate-y-4 opacity-0"
+              enter-to-class="transform translate-y-0 opacity-100"
+              leave-active-class="transition duration-200 ease-in"
+              leave-from-class="transform translate-y-0 opacity-100"
+              leave-to-class="transform -translate-y-4 opacity-0"
+            >
+              <div v-show="openIndex === index" class="px-8 pb-8">
+                <div class="pt-2 text-slate-400 leading-relaxed border-t border-white/5 pt-6">
+                  {{ rt(faq.answer) }}
+                </div>
+              </div>
+            </transition>
+          </div>
+        </ScrollFade>
+      </div>
     </div>
   </section>
 </template>

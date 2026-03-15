@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const trustLogos = [
-  'TechCorp', 'InnovaGroup', 'BuildPro', 'RetailMax', 'CallCenter Уз', 'FactoryLife', 'GlobalLogistics',
-  'TechCorp', 'InnovaGroup', 'BuildPro', 'RetailMax', 'CallCenter Уз', 'FactoryLife', 'GlobalLogistics'
+  'Salam School', 'Durable Beton', 'Nest One', 'Ozguven', 'Grand Pharm', 'Mercedes Benz', 'PDP University', 'Jetour', 'Tayota', 'Land House', 'China House',
+  'Salam School', 'Durable Beton', 'Nest One', 'Ozguven', 'Grand Pharm', 'Mercedes Benz', 'PDP University', 'Jetour', 'Tayota', 'Land House', 'China House'
 ]
 </script>
 
 <template>
   <section class="py-10 bg-gray-950 relative z-20 border-b border-white/5 overflow-hidden">
     <div class="text-center mb-6">
-      <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">Нам доверяют корпорации и малый бизнес</p>
+      <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">{{ $t('logos.title') }}</p>
     </div>
     <div class="flex w-[200%] animate-scroll-left opacity-30 hover:opacity-100 transition-opacity duration-500">
       <div class="w-1/2 flex justify-around items-center px-4">

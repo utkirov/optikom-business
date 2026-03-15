@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { useFetch, useSeoMeta } from '#app'
+import { storeToRefs } from 'pinia'
+import { useSettingsStore } from '../stores/settings'
+import { useSeoMeta } from '#app'
 import Navbar from '../components/Navbar.vue'
 import Hero from '../components/Hero.vue'
 import LogosMarquee from '../components/LogosMarquee.vue'
@@ -9,21 +11,22 @@ import Products from '../components/Products.vue'
 import TariffCalculator from '../components/TariffCalculator.vue'
 import ServicesSla from '../components/ServicesSla.vue'
 import Faq from '../components/Faq.vue'
+import MapComponent from '../components/MapComponent.vue'
 import ProcessEquipment from '../components/ProcessEquipment.vue'
 import ContactFooter from '../components/ContactFooter.vue'
 
-const { data: settings } = await useFetch('/api/settings', { key: 'site-settings' })
+const { t } = useI18n()
 
 useSeoMeta({
-  title: () => settings.value?.seo?.title || 'Optikom Business — IT и связь для бизнеса под ключ',
-  description: () => settings.value?.seo?.description || 'Управляемые IT и телеком услуги для бизнеса: интернет, IT-аутсорсинг, видеонаблюдение, SLA-поддержка 24/7. Единый подрядчик для вашего офиса в Узбекистане.',
-  ogTitle: () => settings.value?.seo?.title || 'Optikom Business — IT и связь для бизнеса',
-  ogDescription: () => settings.value?.seo?.description || 'Интернет, внешняя IT-поддержка, обслуживание инфраструктуры и корпоративные решения в формате единой абонентской услуги.',
+  title: () => t('seo.title'),
+  description: () => t('seo.description'),
+  ogTitle: () => t('seo.title'),
+  ogDescription: () => t('seo.description'),
   ogType: 'website',
   ogUrl: 'https://optikom.biz',
   twitterCard: 'summary_large_image',
-  twitterTitle: () => settings.value?.seo?.title || 'Optikom Business — IT и связь для бизнеса',
-  twitterDescription: () => settings.value?.seo?.description || 'Управляемые IT и телеком услуги. Единый подрядчик для вашего офиса.',
+  twitterTitle: () => t('seo.title'),
+  twitterDescription: () => t('seo.description'),
   robots: 'index, follow',
 })
 </script>
@@ -59,6 +62,7 @@ useSeoMeta({
 
     <!-- 10. Funnel Steps & Equipment Policy -->
     <ProcessEquipment />
+    <MapComponent />
 
     <!-- 11. Target, Advantages & Lead Form / Footer -->
     <ContactFooter />

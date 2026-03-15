@@ -1,0 +1,406 @@
+{
+  "seo": {
+    "title": "Optikom Business — Turnkey IT and Communications for Business",
+    "description": "Managed IT and telecom services for business: internet, IT outsourcing, video surveillance, 24/7 SLA support. Single contractor for your office in Uzbekistan."
+  },
+  "nav": {
+    "home": "Home",
+    "mission": "Mission",
+    "services": "Services",
+    "projects": "Projects",
+    "questions": "FAQ",
+    "contact": "Consultation"
+  },
+  "beforeAfter": {
+    "title": "Life Before and After Optikom",
+    "before": {
+      "title": "Regular Office",
+      "items": [
+        "Internet lags when everyone is in the office",
+        "Admin is always 'away' or 'busy'",
+        "Routers constantly freeze (reboot is everything)",
+        "Tons of bills: for internet, servers, and cameras"
+      ]
+    },
+    "after": {
+      "title": "IT with Optikom Business",
+      "items": [
+        "Internet flies + backup channel 24/7",
+        "Instant response (we solve any issue)",
+        "Enterprise-grade hardware - no lags",
+        "One clear bill - everything included"
+      ]
+    }
+  },
+  "about": {
+    "badge": "External IT Department",
+    "title": "Your complete IT department by subscription",
+    "description": "Optikom Business is the corporate division of the company, providing managed IT and telecom services to businesses in a single subscription model. We take all the infrastructure headaches away from you.",
+    "link": "How we work",
+    "services": {
+      "network": "Network and Internet",
+      "support": "IT Support",
+      "pc": "PC Maintenance and Installation",
+      "cctv": "Video Surveillance"
+    }
+  },
+  "hero": {
+    "badge": "Managed IT and Telecom Solutions",
+    "title": "Fast Internet and Reliable IT Support",
+    "description": "We take over the entire IT infrastructure of your business. Forget about system failures and downtime - with us everything works like clockwork.",
+    "button": "Calculate Cost",
+    "calc": "Calculate",
+    "cards": {
+      "infrastructure": {
+        "label": "Infrastructure",
+        "desc": "Under control 24/7"
+      },
+      "wifi": {
+        "label": "Office Wi-Fi",
+        "desc": "Corporate network building"
+      },
+      "it": {
+        "label": "IT Maintenance",
+        "desc": "PC and equipment support"
+      },
+      "cctv": {
+        "label": "Video Surveillance",
+        "desc": "Installation and service"
+      },
+      "sla": {
+        "label": "SLA",
+        "desc": "Response Guarantee"
+      }
+    }
+  },
+  "logos": {
+    "title": "Trusted by Corporations and Small Businesses"
+  },
+  "sla": {
+    "title": "What does maintenance cover?",
+    "badge": "SLA Guarantees",
+    "subtitle": "Strict quality control",
+    "items": {
+      "users": "User Support",
+      "pc": "IT Support: PC and office equipment maintenance",
+      "printers": "Printers and Peripherals",
+      "servers": "Network Equipment",
+      "wifi": "Office Wi-Fi: network design and maintenance",
+      "cctv": "Video Surveillance: system installation and maintenance",
+      "monitoring": "Network Monitoring"
+    },
+    "features": {
+      "reaction": {
+        "title": "Regulated Response Time",
+        "desc": "Determined by incident criticality."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "desc": "Remote assistance and monitoring 24/7."
+      },
+      "engineers": {
+        "title": "Engineer On-site Visits",
+        "desc": "For urgent resolution of physical hardware issues."
+      }
+    }
+  },
+  "products": {
+    "title": "Product Ecosystem",
+    "subtitle": "Comprehensive infrastructure solutions for companies of any size.",
+    "internet": {
+      "title": "Business Internet",
+      "items": ["Stable symmetrical channel", "Guaranteed speed", "Static IPs", "Line redundancy", "SLA 99.9%", "Classic tariffs"]
+    },
+    "office": {
+      "title": "Managed IT Office",
+      "items": ["Internet + IT support", "User support (Helpdesk)", "PC and printer maintenance", "Wi-Fi and LAN", "Infrastructure monitoring", "Sysadmin replacement"]
+    },
+    "outsourcing": {
+      "title": "IT Outsourcing",
+      "items": ["Equipment support", "Infrastructure maintenance", "Regular site visits", "Remote support 24/7"]
+    },
+    "cctv": {
+      "title": "Video Surveillance",
+      "items": ["System design", "Professional installation", "Regular maintenance", "Remote access"]
+    },
+    "extra": {
+      "title": "Extra Services",
+      "items": ["Backup solutions", "Cloud solutions", "Backup internet channel"]
+    }
+  },
+  "contact": {
+    "title": "Ready for a New Level of IT?",
+    "description": "Leave a request, and our specialist will contact you within 15 minutes for a consultation.",
+    "features": {
+      "security": {
+        "title": "Security",
+        "desc": "Your data is protected according to the ISO 27001 standard"
+      }
+    },
+    "form": {
+      "name": "Your name",
+      "company": "Company",
+      "phone": "Phone number",
+      "message": "Briefly about the task",
+      "submit": "Submit application",
+      "sending": "Sending...",
+      "success": "Your application has been successfully sent! We will contact you soon.",
+      "error": "An error occurred. Try again or call us."
+    },
+    "address": "Tashkent city, Shota Rustaveli str., 1st pass., 6",
+    "copyright": "© 2026 OPTIKOM BUSINESS. All rights reserved."
+  },
+  "faqs": {
+    "title": "Questions and Answers",
+    "subtitle": "All you need to know about our approach to work.",
+    "items": [
+      {
+        "question": "How quickly do you respond to requests?",
+        "answer": "We respond to critical incidents within 15 minutes. For regular requests, response time ranges from 1 to 4 hours according to SLA."
+      },
+      {
+        "question": "What is included in the subscription service?",
+        "answer": "Everything: from user support (Helpdesk) to server configuration, maintenance of Wi-Fi networks, printers, and even video surveillance systems."
+      },
+      {
+        "question": "Do you have your own engineers or do you hire contractors?",
+        "answer": "We have our own staff of qualified engineers and sysadmins. We bear full material responsibility for the infrastructure."
+      },
+      {
+        "question": "Can you work with companies from other cities?",
+        "answer": "At the moment, we focus on Tashkent to ensure maximum speed of engineer on-site visits."
+      }
+    ]
+  },
+  "process": {
+    "badge": "Process & Setup",
+    "title": "Let's Start Working Today",
+    "subtitle": "Only 5 simple steps from chaos to a stable infrastructure.",
+    "features": {
+      "solutions": {
+        "title": "Selection of Solutions",
+        "desc": "Optimizing for your budget"
+      },
+      "transit": {
+        "title": "IP Transit",
+        "desc": "Global connectivity"
+      },
+      "hardware": {
+        "title": "Enterprise HW",
+        "desc": "Cisco, Juniper, Mikrotik"
+      },
+      "security": {
+        "title": "Security",
+        "desc": "L3-L7 traffic protection"
+      },
+      "support": {
+        "title": "Support",
+        "desc": "We are always in touch"
+      }
+    },
+    "steps": [
+      { "title": "Consultation", "desc": "We determine your tasks and pain points" },
+      { "title": "IT Audit", "desc": "Free engineer visit to the site" },
+      { "title": "Commercial", "desc": "Transparent estimate in 3 options" },
+      { "title": "Installation", "desc": "Fast implementation and setup" },
+      { "title": "Ready", "desc": "Your business is under our reliable protection" }
+    ]
+  },
+  "tariffs": {
+    "title": "Flexible Tariff Plans",
+    "subtitle": "Forget about hidden fees. Transparent monthly fee including everything your office needs to work.",
+    "features": {
+      "internet": "Stable Internet",
+      "guarantee": "Quality Guarantee"
+    },
+    "type": {
+      "internet": "Internet"
+    },
+    "speed_unit": "Mbps",
+    "speed_desc": "Symmetrical access channel",
+    "items": {
+      "traffic": "Unlimited traffic",
+      "ip": "Static IP address",
+      "support": "Technical support 24/7"
+    },
+    "button": "Connect",
+    "plans": [
+      { "name": "Opti Business Full 100", "mbps": 100 },
+      { "name": "Opti Business Full 200", "mbps": 200 },
+      { "name": "Opti Business Full 500", "mbps": 500 },
+      { "name": "Opti Business Full 1000", "mbps": 1000 }
+    ]
+  },
+  "map": {
+    "title": "We Work Throughout Uzbekistan",
+    "subtitle": "Our engineers are ready to visit any point in the country. We ensure connectivity of branches and centralized management of IT infrastructure.",
+    "stats": {
+      "reach": "Objects in work",
+      "sla": "Network availability",
+      "zap": "Reaction time"
+    },
+    "location": "Tashkent, Uzbekistan",
+    "status": {
+      "active": "Network active",
+      "monitoring": "Monitoring throughout the republic 24/7"
+    },
+    "regions": {
+      "tashkent": "Tashkent",
+      "samarkand": "Samarkand",
+      "bukhara": "Bukhara",
+      "andijan": "Andijan"
+    }
+  },
+  "calc": {
+    "badge": "transparent estimate",
+    "title": "Build your tariff",
+    "subtitle": "Configure the package of services for the realities of your company and immediately find out the subscription fee.",
+    "internet": {
+      "title": "Internet speed",
+      "popular": "HIT",
+      "unit": "Mbps"
+    },
+    "devices": {
+      "title": "PCs and devices",
+      "unit": "PC"
+    },
+    "sla": {
+      "title": "SLA Level",
+      "bonus": "BONUS",
+      "bonus_desc": "When ordering more than 20 PCs — Premium SLA as a gift!",
+      "standard_desc": "Regulated reaction time and round-the-clock monitoring.",
+      "tier_standard": "Standard (incl)",
+      "tier_premium": "Premium 24/7"
+    },
+    "extra": {
+      "title": "Additional services",
+      "calculator": "Calculator",
+      "cctv": {
+        "title": "CCTV setup",
+        "desc": "Specify the number of cameras for accurate calculation",
+        "install": "Installation (one-time)",
+        "maint": "Maintenance (month)"
+      }
+    },
+    "sum": {
+      "title": "Total estimate",
+      "subtitle": "Estimated cost",
+      "monthly_label": "Monthly services",
+      "internet_line": "Internet line",
+      "it_service": "IT Maintenance",
+      "cctv_maint": "Video surveillance maintenance",
+      "extra": "Extra services",
+      "onetime_label": "One-time works",
+      "cctv_install": "CCTV installation",
+      "total_monthly": "Sub. fee per month",
+      "total_onetime": "One-time payment",
+      "currency_monthly": "uzs / month with VAT",
+      "currency_onetime": "uzs one time",
+      "currency_unit": "uzs",
+      "button": "Discuss details",
+      "disclaimer": "The calculation is not a public offer. The final estimate is formed after the IT audit of your infrastructure."
+    },
+    "compare": {
+      "badge_standard": "Standard approach",
+      "title_standard": "Staff IT specialist",
+      "desc_standard": "Vacations, sick days, taxes, single point of failure, risk of dismissal.",
+      "badge_modern": "Modern approach",
+      "title_modern": "Outsource from Optikom",
+      "desc_modern": "A whole team of engineers, transparent area of responsibility, 24/7 work without sick days.",
+      "benefit": "Benefit up to 70%",
+      "sale_prefix": "Up to"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updated": "Last updated: March 2026",
+    "home": "To Home",
+    "sections": {
+      "s1": {
+        "title": "1. General Provisions",
+        "text": "This Privacy Policy determines the procedure for collecting, processing and storing personal data of users of the Optikom Business website (hereinafter — the \"Site\"). By using the Site, you agree to the terms of this Policy."
+      },
+      "s2": {
+        "title": "2. What data we collect",
+        "text": "When filling out the feedback form, we may request:",
+        "list": [
+          "Name or company name",
+          "Contact phone number"
+        ],
+        "subtext": "The Site may also automatically collect technical data: IP address, browser type, visit pages — solely for the purpose of improving the Site's operation."
+      },
+      "s3": {
+        "title": "3. Purposes of data processing",
+        "list": [
+          "Processing of incoming applications and feedback with potential clients",
+          "Provision of requested services",
+          "Improving the quality of service"
+        ]
+      },
+      "s4": {
+        "title": "4. Transfer of data to third parties",
+        "text": "We do not sell, exchange or transfer your personal data to third parties without your consent, except in cases provided for by the legislation of the Republic of Uzbekistan."
+      },
+      "s5": {
+        "title": "5. Cookies",
+        "text": "The Site may use Cookies to improve the user experience. You can disable them in your browser settings, however, this may affect the operation of some functions of the Site."
+      },
+      "s6": {
+        "title": "6. Data storage",
+        "text": "Personal data is stored on secure servers and no longer than necessary to achieve the goals of processing. Upon your written request, data can be deleted from our system."
+      },
+      "s7": {
+        "title": "7. Contacts",
+        "text": "For questions related to the processing of personal data, please contact:"
+      }
+    }
+  },
+  "terms": {
+    "title": "User Agreement",
+    "updated": "Last updated: March 2026",
+    "sections": {
+      "s1": {
+        "title": "1. Subject of the Agreement",
+        "text": "This User Agreement regulates the relationship between Optikom Business (corporate direction of Optikom LLC) and the user of the Site arising from the use of this Site and its services."
+      },
+      "s2": {
+        "title": "2. Acceptance of terms",
+        "text": "By using the Site, you confirm that you have read, understood and accept the terms of this agreement. If you do not agree with any terms, please stop using the Site."
+      },
+      "s3": {
+        "title": "3. Use of the Site",
+        "text": "The user undertakes:",
+        "list": [
+          "Not to use the Site for illegal or fraudulent purposes",
+          "Not to violate the normal operation of the Site or its infrastructure",
+          "Provide reliable information when filling out forms",
+          "Not to copy or distribute the materials of the Site without permission"
+        ]
+      },
+      "s4": {
+        "title": "4. Intellectual Property",
+        "text": "All materials posted on the Site (texts, images, logos, design) are the property of Optikom Business and are protected by the legislation on intellectual property of the Republic of Uzbekistan."
+      },
+      "s5": {
+        "title": "5. Applications and services",
+        "text": "An application left through the form on the Site is not a public offer and does not entail an automatic conclusion of a contract. A commercial proposal is formed individually after matching the conditions with the manager."
+      },
+      "s6": {
+        "title": "6. Limitation of Liability",
+        "text": "The Site is provided \"as is\". Optikom Business is not responsible for interruptions in the operation of the Site caused by technical reasons, actions of third parties or force majeure circumstances."
+      },
+      "s7": {
+        "title": "7. Change of conditions",
+        "text": "Optikom Business reserves the right to make changes to this agreement at any time. The current version is always available on this page. Continued use of the Site after the publication of changes means your agreement with them."
+      },
+      "s8": {
+        "title": "8. Applicable law",
+        "text": "This agreement is regulated by the legislation of the Republic of Uzbekistan. All disputes are resolved in court at the location of Optikom Business."
+      },
+      "s9": {
+        "title": "9. Contacts",
+        "text": "For questions related to this agreement, please contact:"
+      }
+    }
+  }
+}

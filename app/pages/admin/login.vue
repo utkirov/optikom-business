@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from '#app'
-import { Loader2, AlertCircle, Lock, Shield } from 'lucide-vue-next'
 
 definePageMeta({ layout: 'admin', middleware: 'admin' })
 
@@ -38,7 +37,7 @@ async function login() {
       <!-- Logo/Brand Identity -->
       <div class="text-center mb-10 group">
         <div class="inline-flex w-16 h-16 bg-gradient-to-br from-violet-600 to-indigo-700 rounded-2xl items-center justify-center shadow-2xl shadow-violet-500/20 mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/10">
-          <Shield class="w-8 h-8 text-white group-hover:animate-pulse-glow" />
+          <PhShieldCheck class="w-8 h-8 text-white group-hover:animate-pulse-glow" />
         </div>
         <h1 class="text-3xl font-sans font-black text-white tracking-tight mb-2">Optikom Admin</h1>
         <p class="text-slate-500 text-sm font-medium tracking-wide">Управление корпоративной инфраструктурой</p>
@@ -53,7 +52,7 @@ async function login() {
             <label class="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] ml-1">Пароль администратора</label>
             <div class="relative group/field">
               <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <Lock class="w-4 h-4 text-slate-500 group-focus-within/field:text-violet-400 transition-colors" />
+                <PhLock class="w-4 h-4 text-slate-500 group-focus-within/field:text-violet-400 transition-colors" />
               </div>
               <input
                 v-model="password"
@@ -73,7 +72,7 @@ async function login() {
             enter-to-class="transform scale-100 opacity-100"
           >
             <div v-if="status === 'error'" class="flex items-center gap-3 text-red-400 bg-red-500/10 border border-red-500/20 px-4 py-3 rounded-2xl text-xs font-bold ring-1 ring-red-500/10">
-              <AlertCircle class="w-4 h-4 shrink-0" />
+              <PhWarningCircle class="w-4 h-4 shrink-0" />
               <span>{{ errorMessage }}</span>
             </div>
           </transition>
@@ -84,7 +83,7 @@ async function login() {
             :disabled="!password || status === 'loading'"
             class="w-full py-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-black rounded-2xl transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(84,99,255,0.2)] hover:shadow-[0_0_40px_rgba(84,99,255,0.3)] hover:-translate-y-0.5 active:translate-y-0"
           >
-            <Loader2 v-if="status === 'loading'" class="w-5 h-5 animate-spin" />
+            <PhCircleNotch v-if="status === 'loading'" class="w-5 h-5 animate-spin" />
             <span>{{ status === 'loading' ? 'Авторизация...' : 'Войти в панель' }}</span>
           </button>
         </form>

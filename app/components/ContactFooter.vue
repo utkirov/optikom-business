@@ -1,217 +1,206 @@
 <script setup lang="ts">
+import { PhWifiHigh, PhShieldCheck, PhCircleNotch, PhPaperPlaneTilt, PhCheckCircle, PhWarningCircle, PhPhoneCall } from '@phosphor-icons/vue'
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useSettingsStore } from '../stores/settings'
+import { useI18n } from 'vue-i18n'
 import ScrollFade from './ScrollFade.vue'
-import { Wifi, PhoneCall, CheckCircle2, AlertCircle, Loader2 } from 'lucide-vue-next'
-import { ref, computed } from 'vue'
-import { useFetch, useState } from '#app'
 
-const { data: settings } = await useFetch('/api/settings', { key: 'site-settings' })
+const { locale } = useI18n()
 
-const targetAudience = [
-  'Малый и средний бизнес', 'Офисные компании', 'Call-центры',
-  'Застройщики', 'Торговые сети', 'Сервисные компании', 'Производства'
-]
+const store = useSettingsStore()
+const { settings } = storeToRefs(store)
 
-// Form state
-const name = ref('')
-const phone = ref('')
-const savedTariffData = useState('tariffDetails', () => null)
-
-type FormStatus = 'idle' | 'loading' | 'success' | 'error'
-const status = ref<FormStatus>('idle')
+const status = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
 const errorMessage = ref('')
+const form = ref({
+  name: '',
+  company: '',
+  phone: '',
+  message: '',
+  tariffDetails: {}
+})
+const cpFile = ref<{ data: string, name: string } | null>(null)
 
-// Phone mask handler (+998 (XX) XXX-XX-XX)
-const handlePhoneInput = (e: Event) => {
-  const target = e.target as HTMLInputElement
-  let v = target.value.replace(/\D/g, '')
-  if (v.startsWith('998')) v = v.substring(3)
-  
-  let res = '+998'
-  if (v.length > 0) res += ' (' + v.substring(0, 2)
-  if (v.length > 2) res += ') ' + v.substring(2, 5)
-  if (v.length > 5) res += '-' + v.substring(5, 7)
-  if (v.length > 7) res += '-' + v.substring(7, 9)
-  
-  phone.value = res
+const downloadCP = () => {
+  if (!cpFile.value) return
+  const link = document.createElement('a')
+  link.href = `data:application/pdf;base64,${cpFile.value.data}`
+  link.download = cpFile.value.name
+  link.click()
 }
 
-// Client-side validation
-const isValid = computed(() => {
-  const digitsOnly = phone.value.replace(/\D/g, '')
-  return name.value.trim().length >= 2 && digitsOnly.length === 12
-})
+const handlePhoneInput = (e: Event) => {
+  const input = e.target as HTMLInputElement
+  let value = input.value.replace(/\D/g, '')
+  
+  // Keep +998 or add if empty
+  if (!value.startsWith('998')) {
+    value = '998' + value
+  }
+  
+  value = value.substring(0, 12) // +998 XX XXX XX XX
+  
+  let formatted = '+' + value.substring(0, 3) 
+  if (value.length > 3) formatted += ' (' + value.substring(3, 5)
+  if (value.length > 5) formatted += ') ' + value.substring(5, 8)
+  if (value.length > 8) formatted += '-' + value.substring(8, 10)
+  if (value.length > 10) formatted += '-' + value.substring(10, 12)
+  
+  form.value.phone = formatted
+}
 
-async function submitForm() {
-  if (!isValid.value || status.value === 'loading') return
-
+const submitForm = async () => {
   status.value = 'loading'
+  cpFile.value = null
   errorMessage.value = ''
+  
+  // Get latest tariff data from localStorage if available
+  const savedData = localStorage.getItem('last_tariff_calculation')
+  if (savedData) {
+    try {
+      form.value.tariffDetails = JSON.parse(savedData)
+    } catch (e) {
+      console.warn('Calculating tariff data failed to parse:', e)
+    }
+  }
 
   try {
-    await $fetch('/api/contact', {
+    const response = await $fetch<any>('/api/leads', {
       method: 'POST',
-      body: { 
-        name: name.value.trim(), 
-        phone: phone.value.trim(),
-        tariffDetails: savedTariffData.value 
-      },
+      body: {
+        ...form.value,
+        locale: locale.value
+      }
     })
-    status.value = 'success'
-    name.value = ''
-    phone.value = ''
-    savedTariffData.value = null // clear selected tariff on success
-  } catch (err: unknown) {
+    
+    if (response.success) {
+      status.value = 'success'
+      if (response.pdf) {
+        cpFile.value = { data: response.pdf, name: response.fileName }
+      }
+      form.value = { name: '', company: '', phone: '', message: '', tariffDetails: {} }
+      setTimeout(() => { if (status.value === 'success') status.value = 'idle' }, 10000)
+    }
+  } catch (e: any) {
     status.value = 'error'
-    errorMessage.value = 'Не удалось отправить заявку. Пожалуйста, попробуйте снова или позвоните нам.'
-    console.error(err)
+    errorMessage.value = e.data?.statusMessage || e.message || 'Unknown error'
+    setTimeout(() => { status.value = 'idle' }, 8000)
   }
 }
 </script>
 
 <template>
-  <section id="contact" class="pt-24 pb-12 bg-gray-950 relative overflow-hidden border-t border-white/5">
-    <!-- Dark bg glowing effects -->
-    <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
+  <footer id="contact" class="bg-gray-950 pt-24 pb-12 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-        <!-- Audience -->
         <ScrollFade direction="right">
           <div>
-            <div class="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-bold rounded mb-6 tracking-wide uppercase border border-indigo-500/20">Кому мы полезны</div>
-            <h3 class="text-3xl font-bold text-white mb-8">Решения для любого масштаба</h3>
-            <div class="flex flex-wrap gap-3">
-              <span v-for="tag in targetAudience" :key="tag" class="px-5 py-2.5 bg-gray-900/40 border border-white/5 text-slate-300 text-sm font-medium rounded-full shadow-2xl hover:bg-gray-800/60 transition-colors cursor-default backdrop-blur-sm">
-                {{ tag }}
-              </span>
+            <div class="flex items-center space-x-2 group cursor-pointer mb-8">
+              <div class="p-1.5 bg-indigo-500 rounded-lg group-hover:scale-110 transition-transform">
+                <PhWifiHigh class="w-5 h-5 text-white" />
+              </div>
+              <span class="text-xl font-bold tracking-tight text-white group-hover:text-indigo-400 transition-colors">Optikom<span class="text-indigo-500">.Biz</span></span>
+            </div>
+            
+            <h2 class="text-4xl font-bold text-white mb-6">{{ $t('contact.title') }}</h2>
+            <p class="text-slate-400 text-lg mb-10 max-w-lg">{{ $t('contact.description') }}</p>
+            
+            <div class="space-y-6">
+              <div class="flex items-center space-x-4 bg-gray-900/40 p-5 rounded-2xl border border-white/5 shadow-2xl hover:bg-gray-900 transition-colors">
+                <div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center border border-indigo-500/20">
+                  <PhShieldCheck class="w-6 h-6 text-indigo-400" />
+                </div>
+                <div>
+                  <div class="text-sm font-bold text-slate-300 uppercase tracking-widest leading-none mb-1">{{ $t('contact.features.security.title') }}</div>
+                  <div class="text-xs text-slate-500 leading-tight">{{ $t('contact.features.security.desc') }}</div>
+                </div>
+              </div>
             </div>
           </div>
         </ScrollFade>
 
-        <!-- Advantages -->
         <ScrollFade direction="left">
-          <div>
-            <div class="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 text-xs font-bold rounded mb-6 tracking-wide uppercase border border-indigo-500/20">Почему мы</div>
-            <h3 class="text-3xl font-bold text-white mb-8">Преимущества Optikom</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div class="p-5 bg-gray-900/40 rounded-2xl border border-white/5 backdrop-blur-sm group hover:border-indigo-500/30 transition-colors">
-                <span class="block font-bold text-slate-100 mb-1 group-hover:text-indigo-400 transition-colors">Единый подрядчик</span>
-                <span class="text-sm text-slate-500 font-medium italic">Интернет и IT в одном окне</span>
+          <div class="bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-white/10 shadow-2xl relative overflow-hidden group">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px] -mr-32 -mt-32 group-hover:bg-indigo-500/10 transition-colors"></div>
+            
+            <form @submit.prevent="submitForm" class="space-y-4 relative z-10">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="reveal-up" style="animation-delay: 100ms">
+                  <input v-model="form.name" type="text" :placeholder="$t('contact.form.name')" required class="bg-gray-950/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium placeholder:text-slate-600 block w-full outline-none" />
+                </div>
+                <div class="reveal-up" style="animation-delay: 200ms">
+                  <input v-model="form.company" type="text" :placeholder="$t('contact.form.company')" class="bg-gray-950/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium placeholder:text-slate-600 block w-full outline-none" />
+                </div>
               </div>
-              <div class="p-5 bg-gray-900/40 rounded-2xl border border-white/5 backdrop-blur-sm group hover:border-indigo-500/30 transition-colors">
-                <span class="block font-bold text-slate-100 mb-1 group-hover:text-indigo-400 transition-colors">Снижение простоев</span>
-                <span class="text-sm text-slate-500 font-medium italic">Проактивный мониторинг</span>
+              <div class="reveal-up" style="animation-delay: 300ms">
+                <input 
+                  v-model="form.phone" 
+                  type="tel" 
+                  :placeholder="$t('contact.form.phone')" 
+                  required 
+                  @input="handlePhoneInput"
+                  class="bg-gray-950/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium placeholder:text-slate-600 block w-full outline-none" 
+                />
               </div>
-              <div class="p-5 bg-gray-900/40 rounded-2xl border border-white/5 backdrop-blur-sm group hover:border-indigo-500/30 transition-colors">
-                <span class="block font-bold text-slate-100 mb-1 group-hover:text-indigo-400 transition-colors">Фиксированная цена</span>
-                <span class="text-sm text-slate-500 font-medium italic">Прозрачная абон. плата</span>
+              <div class="reveal-up" style="animation-delay: 400ms">
+                <textarea v-model="form.message" :placeholder="$t('contact.form.message')" rows="4" class="bg-gray-950/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium placeholder:text-slate-600 block w-full outline-none"></textarea>
               </div>
-              <div class="p-5 bg-gray-900/40 rounded-2xl border border-white/5 backdrop-blur-sm group hover:border-indigo-500/30 transition-colors">
-                <span class="block font-bold text-slate-100 mb-1 group-hover:text-indigo-400 transition-colors">Масштабируемость</span>
-                <span class="text-sm text-slate-500 font-medium italic">Рост без слома IT-ядра</span>
-              </div>
-            </div>
-          </div>
-        </ScrollFade>
-      </div>
-
-      <ScrollFade>
-        <!-- Glassmorphism Form -->
-        <div class="rounded-[2.5rem] p-10 md:p-16 bg-gradient-to-br from-gray-900/60 to-gray-950/40 backdrop-blur-2xl border border-white/5 relative overflow-hidden flex flex-col md:flex-row gap-12 items-center shadow-2xl">
-          <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
-
-          <div class="md:w-1/2 relative z-10 w-full mb-8 md:mb-0">
-            <h2 class="text-3xl md:text-5xl font-sans font-bold text-white mb-6 tracking-tight leading-tight">Обсудим вашу инфраструктуру?</h2>
-            <p class="text-slate-400 text-lg leading-relaxed mb-8">
-              Оставьте заявку на первую консультацию. Передайте заботу об IT-ядре профессионалам и сфокусируйтесь на росте бизнеса.
-            </p>
-            <div class="flex items-center space-x-4">
-              <div class="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center shrink-0 border border-indigo-500/20 shadow-lg shadow-indigo-500/10">
-                <PhoneCall class="w-5 h-5 text-indigo-400"/>
-              </div>
-              <div>
-                <div class="text-[10px] text-indigo-400 uppercase tracking-[0.2em] font-black mb-1">Выделенная линия</div>
-                <a :href="settings?.contacts?.phone ? 'tel:' + settings.contacts.phone.replace(/\D/g, '') : 'tel:+998710000000'" class="text-xl font-bold text-white hover:text-indigo-400 transition-colors tracking-tight">
-                  {{ settings?.contacts?.phone || '+998 (71) 000-00-00' }}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="md:w-1/2 relative z-10 w-full">
-            <!-- Success state -->
-            <div v-if="status === 'success'" class="flex flex-col items-center justify-center text-center py-12 px-6 bg-emerald-500/10 border border-emerald-500/20 rounded-[2rem] backdrop-blur-md">
-              <CheckCircle2 class="w-16 h-16 text-emerald-400 mb-4 animate-bounce" />
-              <h3 class="text-2xl font-bold text-white mb-2">Заявка отправлена!</h3>
-              <p class="text-emerald-200/60 text-sm leading-relaxed">Наш менеджер свяжется с вами в ближайшее время.</p>
-              <button @click="status = 'idle'" class="mt-6 text-xs text-indigo-400 hover:text-white transition-colors underline underline-offset-4 decoration-indigo-500/30">
-                Отправить ещё одну заявку
+              
+              <button type="submit" :disabled="status === 'loading'" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 disabled:bg-indigo-500/50 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 transition-all shadow-xl shadow-indigo-500/20 btn-hover-scale">
+                <PhCircleNotch v-if="status === 'loading'" class="w-5 h-5 animate-spin" />
+                <PhPaperPlaneTilt v-else class="w-5 h-5" />
+                <span>{{ status === 'loading' ? $t('contact.form.sending') : $t('contact.form.submit') }}</span>
               </button>
-            </div>
-
-            <!-- Form state -->
-            <form v-else @submit.prevent="submitForm" novalidate class="relative bg-black/20 p-8 rounded-[2rem] border border-white/5 shadow-inner">
-              <div class="space-y-4">
-                <div>
-                  <input
-                    v-model="name"
-                    type="text"
-                    placeholder="Имя / Название компании"
-                    :disabled="status === 'loading'"
-                    class="w-full px-6 py-5 bg-white/5 border border-white/10 rounded-[1.25rem] focus:outline-none focus:border-indigo-500/50 focus:bg-white/10 transition-all text-white placeholder-slate-600 text-sm backdrop-blur-md disabled:opacity-50"
-                  />
+              
+              <transition name="fade">
+                <div v-if="status === 'success'" class="mt-4 p-5 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+                  <div class="flex items-center space-x-3 mb-4">
+                    <PhCheckCircle class="w-5 h-5 text-emerald-500 shrink-0" />
+                    <p class="text-emerald-400 text-sm font-medium">{{ $t('contact.form.success') }}</p>
+                  </div>
+                  <button 
+                    v-if="cpFile"
+                    @click="downloadCP" 
+                    type="button"
+                    class="w-full py-4 bg-indigo-500 hover:bg-indigo-400 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 transition-all shadow-xl shadow-indigo-500/20 active:scale-[0.98] animate-bounce-subtle"
+                  >
+                    <PhPaperPlaneTilt class="w-5 h-5 rotate-180" />
+                    <span>Скачайте ваше предложение (PDF)</span>
+                  </button>
                 </div>
-                <div>
-                  <input
-                    :value="phone"
-                    @input="handlePhoneInput"
-                    type="tel"
-                    placeholder="+998 (__) ___-__-__"
-                    :disabled="status === 'loading'"
-                    class="w-full px-6 py-5 bg-white/5 border border-white/10 rounded-[1.25rem] focus:outline-none focus:border-indigo-500/50 focus:bg-white/10 transition-all text-white placeholder-slate-600 text-sm backdrop-blur-md disabled:opacity-50"
-                  />
+                <div v-else-if="status === 'error'" class="mt-4 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl">
+                  <div class="flex items-center space-x-3">
+                    <PhWarningCircle class="w-5 h-5 text-red-500 shrink-0" />
+                    <p class="text-red-400 text-sm font-medium">{{ $t('contact.form.error') }}</p>
+                  </div>
+                  <div v-if="errorMessage" class="mt-2 text-[10px] text-red-400/60 font-mono break-all uppercase border-t border-red-500/10 pt-2">
+                    {{ errorMessage }}
+                  </div>
                 </div>
-
-                <!-- Error message -->
-                <div v-if="status === 'error'" class="flex items-start space-x-3 p-4 bg-red-500/10 border border-red-500/20 rounded-xl">
-                  <AlertCircle class="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                  <p class="text-red-300 text-xs leading-relaxed font-medium">{{ errorMessage }}</p>
-                </div>
-
-                <button
-                  type="submit"
-                  :disabled="!isValid || status === 'loading'"
-                  class="w-full px-6 py-5 mt-2 bg-indigo-600 text-white rounded-[1.25rem] font-bold transition-all shadow-[0_10px_30px_-10px_rgba(84,99,255,0.5)] hover:bg-indigo-500 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center space-x-2 border border-indigo-400/20"
-                >
-                  <Loader2 v-if="status === 'loading'" class="w-5 h-5 animate-spin" />
-                  <span>{{ status === 'loading' ? 'Отправка...' : 'Обсудить проект' }}</span>
-                </button>
-
-                <p class="text-center text-[10px] text-slate-600 mt-4 leading-relaxed uppercase tracking-tighter">
-                  Нажимая кнопку, вы соглашаетесь с
-                  <NuxtLink to="/terms" class="text-indigo-500/50 hover:text-indigo-400 transition-colors">условиями использования</NuxtLink>.
-                </p>
-              </div>
+              </transition>
             </form>
           </div>
-        </div>
-      </ScrollFade>
-
-      <!-- Footer Bottom -->
-      <div class="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-xs font-medium text-slate-600">
-        <div class="flex items-center space-x-2 mb-4 md:mb-0">
-          <div class="p-1 bg-gray-900 rounded-md border border-white/5">
-            <Wifi class="w-4 h-4 text-indigo-500/40" />
-          </div>
-          <span class="tracking-widest uppercase">Optikom Business © 2026</span>
-        </div>
-        <div class="flex space-x-8">
-          <NuxtLink to="/privacy" class="hover:text-indigo-400 transition-colors uppercase tracking-widest text-[10px]">Политика</NuxtLink>
-          <NuxtLink to="/terms" class="hover:text-indigo-400 transition-colors uppercase tracking-widest text-[10px]">Соглашение</NuxtLink>
-        </div>
+        </ScrollFade>
       </div>
 
+      <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="flex flex-col items-center md:items-start">
+          <div class="flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition-colors font-bold text-lg mb-2">
+            <PhPhoneCall class="w-5 h-5" />
+            <a href="tel:+998712000202">+998 (71) 200-02-02</a>
+          </div>
+          <p class="text-slate-600 text-sm font-medium">{{ $t('contact.address') }}</p>
+        </div>
+        
+        <div class="flex items-center space-x-6">
+          <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">TG</a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">FB</a>
+          <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">IN</a>
+        </div>
+        
+        <p class="text-slate-600 text-xs font-bold uppercase tracking-widest">{{ $t('contact.copyright') }}</p>
+      </div>
     </div>
-  </section>
+  </footer>
 </template>

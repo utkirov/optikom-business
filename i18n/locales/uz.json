@@ -1,0 +1,406 @@
+{
+  "seo": {
+    "title": "Optikom Business — Biznes uchun IT va aloqa tayyor holda",
+    "description": "Biznes uchun boshqariladigan IT va telekommunikatsiya xizmatlari: internet, IT-autsorsing, videokuzatuv, 24/7 SLA yordami. O‘zbekistondagi ofisingiz uchun yagona pudratchi."
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "mission": "Missiya",
+    "services": "Xizmatlar",
+    "projects": "Loyihalar",
+    "questions": "Savollar",
+    "contact": "Konsultatsiya"
+  },
+  "beforeAfter": {
+    "title": "Optikom dan oldin va keyin hayot",
+    "before": {
+      "title": "Oddiy ofis",
+      "items": [
+        "Hamma ofisda bo'lganda internet sekinlashadi",
+        "Admin har doim 'tashqarida' yoki 'band'",
+        "Routerlar har doim qotib qoladi (rebut hamma narsa)",
+        "Ko'plab hisoblar: internet, serverlar va kameralar uchun"
+      ]
+    },
+    "after": {
+      "title": "Optikom Business bilan IT",
+      "items": [
+        "Internet uchadi + 24/7 zahira kanali",
+        "Tezkor reaksiya (har qanday masalani hal qilamiz)",
+        "Enterprise darajasidagi texnika — qotishlarsiz",
+        "Bitta tushunarli hisob — hammasi ichida"
+      ]
+    }
+  },
+  "about": {
+    "badge": "Tashqi IT-bo'lim",
+    "title": "Sizning obuna bo'yicha to'liq IT-departamentingiz",
+    "description": "Optikom Business — kompaniyaning korporativ yo'nalishi bo'lib, biznesga yagona abonent modeli formatida boshqariladigan IT va telekom xizmatlarini taqdim etadi. Biz infratuzilma bo'yicha barcha muammolarni sizdan olib tashlaymiz.",
+    "link": "Qanday ishlaymiz",
+    "services": {
+      "network": "Tarmoq va Internet",
+      "support": "IT yordami",
+      "pc": "PK ga xizmat ko'rsatish va o'rnatish",
+      "cctv": "Videokuzatuv"
+    }
+  },
+  "hero": {
+    "badge": "Boshqariladigan IT va Telekom yechimlari",
+    "title": "Tezkor Internet va ishonchli IT-qo'llab-quvvatlash",
+    "description": "Biz sizning biznesingizning barcha IT-infratuzilmasini o'z zimmamizga olamiz. Tizimdagi nosozliklar va to'xtab qolishlar haqida unuting - biz bilan hammasi soat kabi ishlaydi.",
+    "button": "Narxni hisoblash",
+    "calc": "Hisoblash",
+    "cards": {
+      "infrastructure": {
+        "label": "Infratuzilma",
+        "desc": "24/7 nazorat ostida"
+      },
+      "wifi": {
+        "label": "Ofis uchun Wi-Fi",
+        "desc": "Korporativ tarmoq qurish"
+      },
+      "it": {
+        "label": "IT xizmati",
+        "desc": "PK va uskunalar yordami"
+      },
+      "cctv": {
+        "label": "Videokuzatuv",
+        "desc": "Montaj va xizmat ko'rsatish"
+      },
+      "sla": {
+        "label": "SLA",
+        "desc": "Reaksiya kafolati"
+      }
+    }
+  },
+  "logos": {
+    "title": "Korporatsiyalar va kichik biznes bizga ishonadi"
+  },
+  "sla": {
+    "title": "Xizmat ko'rsatish nimani qamrab oladi?",
+    "badge": "SLA kafolatlari",
+    "subtitle": "Qat'iy sifat nazorati",
+    "items": {
+      "users": "Foydalanuvchilarni qo'llab-quvvatlash",
+      "pc": "IT xizmati: PK va ofis uskunalarini qo'llab-quvvatlash",
+      "printers": "Printerlar va periferiya",
+      "servers": "Tarmoq uskunalari",
+      "wifi": "Ofis uchun Wi-Fi: tarmoqni qurish va xizmat ko'rsatish",
+      "cctv": "Videokuzatuv: tizimlarni montaj qilish va xizmat ko'rsatish",
+      "monitoring": "Tarmoq monitoringi"
+    },
+    "features": {
+      "reaction": {
+        "title": "Belgilangan reaksiya vaqti",
+        "desc": "Hodisaning muhimligiga qarab belgilanadi."
+      },
+      "support": {
+        "title": "Tunu-kun yordam",
+        "desc": "Masofaviy yordam va monitoring 24/7."
+      },
+      "engineers": {
+        "title": "Muhandislar tashrifi",
+        "desc": "Joyida jismoniy muammolarni tezkor hal qilish uchun."
+      }
+    }
+  },
+  "products": {
+    "title": "Mahsulotlar ekotizimi",
+    "subtitle": "Har qanday o'lchamdagi kompaniyalar uchun kompleks infratuzilma yechimlari.",
+    "internet": {
+      "title": "Biznes uchun internet",
+      "items": ["Barqaror simmetrik kanal", "Kafolatlangan tezlik", "Statik IP", "Liniyalarni zaxiralash", "SLA 99.9%", "Klassik tariflar"]
+    },
+    "office": {
+      "title": "Boshqariladigan IT-ofis",
+      "items": ["Internet + IT qo'llab-quvvatlash", "Foydalanuvchilarni qo'llab-quvvatlash", "PK va printerlarga xizmat ko'rsatish", "Wi-Fi va lokal tarmoq", "Infratuzilma monitoringi", "Sismadminni almashtirish"]
+    },
+    "outsourcing": {
+      "title": "IT autsorsing",
+      "items": ["Uskunalarni qo'llab-quvvatlash", "Infratuzilmaga xizmat ko'rsatish", "Doimiy tashriflar", "Masofaviy yordam 24/7"]
+    },
+    "cctv": {
+      "title": "Videokuzatuv",
+      "items": ["Tizimlarni loyihalash", "Professional montaj", "Doimiy texnik xizmat", "Masofaviy kirish"]
+    },
+    "extra": {
+      "title": "Qo'shimcha xizmatlar",
+      "items": ["Zaxira nusxalash", "Bulutli yechimlar", "Zaxira internet kanali"]
+    }
+  },
+  "contact": {
+    "title": "IT ning yangi darajasiga tayyormisiz?",
+    "description": "So'rov qoldiring va mutaxassisimiz 15 daqiqa ichida maslahat uchun siz bilan bog'lanadi.",
+    "features": {
+      "security": {
+        "title": "Xavfsizlik",
+        "desc": "Ma'lumotlaringiz ISO 27001 standarti bo'yicha himoyalangan"
+      }
+    },
+    "form": {
+      "name": "Ismingiz",
+      "company": "Kompaniya",
+      "phone": "Telefon raqami",
+      "message": "Vazifa haqida qisqacha",
+      "submit": "So'rov yuborish",
+      "sending": "Yuborilmoqda...",
+      "success": "So'rovingiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.",
+      "error": "Xatolik yuz berdi. Qayta urinib ko'ring yoki bizga qo'ng'iroq qiling."
+    },
+    "address": "Toshkent sh., Shota Rustaveli ko'ch., 1-o'tish yo'li, 6",
+    "copyright": "© 2026 OPTIKOM BUSINESS. Barcha huquqlar himoyalangan."
+  },
+  "faqs": {
+    "title": "Savollar va javoblar",
+    "subtitle": "Bizning ish tartibimiz haqida bilishingiz kerak bo'lgan hamma narsa.",
+    "items": [
+      {
+        "question": "So'rovlarga qanchalik tez javob berasiz?",
+        "answer": "Muhim hodisalarga 15 daqiqa ichida javob beramiz. Oddiy so'rovlar uchun javob berish vaqti SLA bo'yicha 1 dan 4 soatgacha."
+      },
+      {
+        "question": "Abonent xizmatiga nimalar kiradi?",
+        "answer": "Hammasi: foydalanuvchilarni qo'llab-quvvatlashdan (Helpdesk) serverlarni sozlash, Wi-Fi tarmoqlari, printerlar va hatto videokuzatuv tizimlariga xizmat ko'rsatishgacha."
+      },
+      {
+        "question": "Sizda o'z muhandislaringiz bormi yoki pudratchilarni yollaysizmi?",
+        "answer": "Bizda malakali muhandislar va tizim ma'murlarining o'z shtati mavjud. Biz infratuzilma uchun to'liq moddiy javobgarlikni o'z zimmamizga olamiz."
+      },
+      {
+        "question": "Boshqa shaharlardagi kompaniyalar bilan ishlay olasizmi?",
+        "answer": "Hozirgi vaqtda muhandislarning joylarga chiqish tezligini ta'minlash uchun Toshkentga e'tibor qaratmoqdamiz."
+      }
+    ]
+  },
+  "process": {
+    "badge": "Process & Setup",
+    "title": "Bugun ishni boshlaymiz",
+    "subtitle": "Xaotik holatdan barqaror infratuzilmagacha atigi 5 ta oddiy qadam.",
+    "features": {
+      "solutions": {
+        "title": "Yechimlarni tanlash",
+        "desc": "Budjetingizga mos ravishda optimallashtiramiz"
+      },
+      "transit": {
+        "title": "IP Transit",
+        "desc": "Global bog'lanish"
+      },
+      "hardware": {
+        "title": "Enterprise HW",
+        "desc": "Cisco, Juniper, Mikrotik"
+      },
+      "security": {
+        "title": "Xavfsizlik",
+        "desc": "L3-L7 trafik himoyasi"
+      },
+      "support": {
+        "title": "Qo'llab-quvvatlash",
+        "desc": "Biz har doim aloqadamiz"
+      }
+    },
+    "steps": [
+      { "title": "Konsultatsiya", "desc": "Vazifalaringizni va muammolaringizni aniqlaymiz" },
+      { "title": "IT-Audit", "desc": "Muhandisning ob'ektga bepul tashrifi" },
+      { "title": "Tijorat taklifi", "desc": "3 xil variantdagi shaffof smeta" },
+      { "title": "Montaj", "desc": "Tezkor joriy etish va sozlash" },
+      { "title": "Tayyor", "desc": "Sizning biznesingiz bizning ishonchli himoyamiz ostida" }
+    ]
+  },
+  "tariffs": {
+    "title": "Moslanuvchan tarif rejalari",
+    "subtitle": "Yashirin to'lovlar haqida unuting. Ofisingiz ishlashi uchun barcha zarur xizmatlarni o'z ichiga olgan shaffof abonent to'lovi.",
+    "features": {
+      "internet": "Barqaror internet",
+      "guarantee": "Sifat kafolati"
+    },
+    "type": {
+      "internet": "Internet"
+    },
+    "speed_unit": "Mbit/s",
+    "speed_desc": "Simmetrik kirish kanali",
+    "items": {
+      "traffic": "Cheksiz trafik",
+      "ip": "Statik IP manzil",
+      "support": "Texnik yordam 24/7"
+    },
+    "button": "Ulanish",
+    "plans": [
+      { "name": "Opti Business Full 100", "mbps": 100 },
+      { "name": "Opti Business Full 200", "mbps": 200 },
+      { "name": "Opti Business Full 500", "mbps": 500 },
+      { "name": "Opti Business Full 1000", "mbps": 1000 }
+    ]
+  },
+  "map": {
+    "title": "Butun O'zbekiston bo'ylab ishlaymiz",
+    "subtitle": "Bizning muhandislarimiz mamlakatning istalgan nuqtasiga chiqishga tayyor. Biz filiallar bog'lanishini va IT infratuzilmasini markazlashtirilgan boshqarishni ta'minlaymiz.",
+    "stats": {
+      "reach": "Ishdagi ob'ektlar",
+      "sla": "Tarmoq barqarorligi",
+      "zap": "Javob berish vaqti"
+    },
+    "location": "Toshkent sh., O'zbekiston",
+    "status": {
+      "active": "Tarmoq faol",
+      "monitoring": "Butun respublika bo'ylab monitoring 24/7"
+    },
+    "regions": {
+      "tashkent": "Toshkent",
+      "samarkand": "Samarqand",
+      "bukhara": "Buxoro",
+      "andijan": "Andijon"
+    }
+  },
+  "calc": {
+    "badge": "shaffof smeta",
+    "title": "O'z tarifingizni yig'ing",
+    "subtitle": "Xizmatlar paketini kompaniyangiz voqeligiga moslashtiring va abonent to'lovini darhol bilib oling.",
+    "internet": {
+      "title": "Internet tezligi",
+      "popular": "XIT",
+      "unit": "Mbit/s"
+    },
+    "devices": {
+      "title": "PK va qurilmalar",
+      "unit": "PK"
+    },
+    "sla": {
+      "title": "SLA darajasi",
+      "bonus": "BONUS",
+      "bonus_desc": "20 tadan ortiq kompyuterga buyurtma berganda — Premium SLA sovg'a sifatida!",
+      "standard_desc": "Reglamentlangan javob vaqti va kecha-yu kunduz monitoring.",
+      "tier_standard": "Standart (kiritilgan)",
+      "tier_premium": "Premium 24/7"
+    },
+    "extra": {
+      "title": "Qo'shimcha xizmatlar",
+      "calculator": "Kalkulyator",
+      "cctv": {
+        "title": "Videokuzatuv sozlamalari",
+        "desc": "Aniq hisob-kitob uchun kameralar sonini ko'rsating",
+        "install": "O'rnatish (bir marta)",
+        "maint": "Xizmat ko'rsatish (oyiga)"
+      }
+    },
+    "sum": {
+      "title": "Yakuniy smeta",
+      "subtitle": "Taxminiy qiymat",
+      "monthly_label": "Oylik xizmatlar",
+      "internet_line": "Internet liniyasi",
+      "it_service": "IT Xizmat ko'rsatish",
+      "cctv_maint": "Videokuzatuv xizmati",
+      "extra": "Qo'shimcha xizmatlar",
+      "onetime_label": "Bir martalik ishlar",
+      "cctv_install": "Videokuzatuv o'rnatish",
+      "total_monthly": "Oylik abonent to'lovi",
+      "total_onetime": "Bir martalik to'lov",
+      "currency_monthly": "so'm / oy QQS bilan",
+      "currency_onetime": "so'm bir marta",
+      "currency_unit": "so'm",
+      "button": "Tafsilotlarni muhokama qilish",
+      "disclaimer": "Hisob-kitob ommaviy oferta emas. Yakuniy smeta infratuzilmangiz IT-auditidan so'ng shakllantiriladi."
+    },
+    "compare": {
+      "badge_standard": "Standart yondashuv",
+      "title_standard": "Shtatdagi IT mutaxassisi",
+      "desc_standard": "Ta'tillar, kasallik ta'tillari, soliqlar, yagona nosozlik nuqtasi, ishdan bo'shash xavfi.",
+      "badge_modern": "Zamonaviy yondashuv",
+      "title_modern": "Optikom autsorsingi",
+      "desc_modern": "Muhandislarning butun jamoasi, shaffof mas'uliyat hududi, kasallik ta'tilisiz 24/7 ishlash.",
+      "benefit": "70% gacha foyda",
+      "sale_prefix": "Gacha"
+    }
+  },
+  "privacy": {
+    "title": "Maxfiylik siyosati",
+    "updated": "Oxirgi yangilanish: 2026-yil mart",
+    "home": "Asosiyga",
+    "sections": {
+      "s1": {
+        "title": "1. Umumiy qoidalar",
+        "text": "Ushbu Maxfiylik siyosati Optikom Business veb-sayti (keyingi o'rinlarda — \"Sayt\") foydalanuvchilarining shaxsiy ma'lumotlarini yig'ish, qayta ishlash va saqlash tartibini belgilaydi. Saytdan foydalanish orqali siz ushbu Siyosat shartlariga rozilik bildirasiz."
+      },
+      "s2": {
+        "title": "2. Biz qanday ma'lumotlarni yig'amiz",
+        "text": "Teskay aloqa shaklini to'ldirganda biz quyidagilarni so'rashimiz mumkin:",
+        "list": [
+          "Ism yoki kompaniya nomi",
+          "Aloqa telefon raqami"
+        ],
+        "subtext": "Sayt shuningdek texnik ma'lumotlarni avtomatik ravishda yig'ishi mumkin: IP-manzil, brauzer turi, tashrif buyurilgan sahifalar — faqat Sayt ishini yaxshilash maqsadida."
+      },
+      "s3": {
+        "title": "3. Ma'lumotlarni qayta ishlash maqsadlari",
+        "list": [
+          "Kelib tushgan arizalarni qayta ishlash va potentsial mijozlar bilan qayta aloqa",
+          "So'ralgan xizmatlarni taqdim etish",
+          "Xizmat sifatini yaxshilash"
+        ]
+      },
+      "s4": {
+        "title": "4. Ma'lumotlarni uchinchi shaxslarga berish",
+        "text": "Biz sizning shaxsiy ma'lumotlaringizni sizning roziligingizsiz uchinchi shaxslarga sotmaymiz, almashmaymiz va bermaymiz, O'zbekiston Respublikasi qonunchiligida nazarda tutilgan hollar bundan mustasno."
+      },
+      "s5": {
+        "title": "5. Cookies",
+        "text": "Sayt foydalanuvchi tajribasini yaxshilash uchun Cookie fayllaridan foydalanishi mumkin. Siz ularni brauzer sozlamalarida o'chirib qo'yishingiz mumkin, biroq bu Saytning ba'zi funktsiyalari ishiga ta'sir qilishi mumkin."
+      },
+      "s6": {
+        "title": "6. Ma'lumotlarni saqlash",
+        "text": "Shaxsiy ma'lumotlar himoyalangan serverlarda va qayta ishlash maqsadlariga erishish uchun zarur bo'lgan muddatdan ortiq bo'lmagan vaqt davomida saqlanadi. Sizning yozma so'rovingizga ko'ra ma'lumotlar tizimimizdan o'chirilishi mumkin."
+      },
+      "s7": {
+        "title": "7. Kontaktlar",
+        "text": "Shaxsiy ma'lumotlarni qayta ishlash bilan bog'liq savollar bo'yicha murojaat qiling:"
+      }
+    }
+  },
+  "terms": {
+    "title": "Foydalanuvchi shartnomasi",
+    "updated": "Oxirgi yangilanish: 2026-yil mart",
+    "sections": {
+      "s1": {
+        "title": "1. Shartnoma mavzusi",
+        "text": "Ushbu Foydalanuvchi shartnomasi Optikom Business (\"Optikom\" MChJ korporativ yo'nalishi) va Sayt foydalanuvchisi o'rtasidagi ushbu Sayt va uning xizmatlaridan foydalanishda yuzaga keladigan munosabatlarni tartibga soladi."
+      },
+      "s2": {
+        "title": "2. Shartlarni qabul qilish",
+        "text": "Saytdan foydalanish orqali siz ushbu shartnoma shartlarini o'qiganingizni, tushunganingizni va qabul qilganingizni tasdiqlaysiz. Agar siz biron bir shartga rozi bo'lmasangiz, iltimos, Saytdan foydalanishni to'xtating."
+      },
+      "s3": {
+        "title": "3. Saytdan foydalanish",
+        "text": "Foydalanuvchi quyidagilarni o'z zimmasiga oladi:",
+        "list": [
+          "Saytdan noqonuniy yoki firibgarlik maqsadlarida foydalanmaslik",
+          "Sayt yoki uning infratuzilmasining normal ishlashini buzmaslik",
+          "Shakllarni to'ldirishda ishonchli ma'lumotlarni taqdim etish",
+          "Sayt materiallarini ruxsatsiz nusxa ko'chirmaslik va tarqatmaslik"
+        ]
+      },
+      "s4": {
+        "title": "4. Intellektual mulk",
+        "text": "Saytda joylashtirilgan barcha materiallar (matnlar, tasvirlar, logotiplar, dizayn) Optikom Business mulki hisoblanadi va O'zbekiston Respublikasining intellektual mulk to'g'risidagi qonunchiligi bilan himoyalangan."
+      },
+      "s5": {
+        "title": "5. Arizalar va xizmatlar",
+        "text": "Saytdagi shakl orqali qoldirilgan ariza ommaviy oferta hisoblanmaydi va shartnomaning avtomatik ravishda tuzilishiga olib kelmaydi. Tijorat taklifi menejer bilan shartlar kelishilgandan so'ng individual ravishda shakllantiriladi."
+      },
+      "s6": {
+        "title": "6. Javobgarlikni cheklash",
+        "text": "Sayt \"qanday bo'lsa shunday\" asosida taqdim etiladi. Optikom Business texnik sabablar, uchinchi shaxslarning harakatlari yoki fors-major holatlari tufayli Sayt ishidagi uzilishlar uchun javobgar emas."
+      },
+      "s7": {
+        "title": "7. Shartlarni o'zgartirish",
+        "text": "Optikom Business istalgan vaqtda ushbu shartnomaga o'zgartirishlar kiritish huquqini o'zida saqlab qoladi. Amaldagi versiya doimo ushbu sahifada mavjud. O'zgarishlar e'lon qilingandan keyin Saytdan foydalanishni davom ettirish sizning ularga roziligingizni anglatadi."
+      },
+      "s8": {
+        "title": "8. Qo'llaniladigan huquq",
+        "text": "Ushbu shartnoma O'zbekiston Respublikasi qonunchiligi bilan tartibga solinadi. Barcha nizolar Optikom Business joylashgan joydagi sudda hal qilinadi."
+      },
+      "s9": {
+        "title": "9. Kontaktlar",
+        "text": "Ushbu shartnoma bilan bog'liq savollar bo'yicha murojaat qiling:"
+      }
+    }
+  }
+}

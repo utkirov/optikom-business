@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ExternalLink, LogOut, Shield } from 'lucide-vue-next'
 import { useRouter, useCookie } from '#app'
 import { computed } from 'vue'
 
@@ -24,7 +23,7 @@ async function logout() {
         <!-- Branding -->
         <div class="flex items-center gap-4 group cursor-default">
           <div class="w-11 h-11 bg-gradient-to-br from-violet-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-xl shadow-violet-500/20 border border-white/10 transition-transform group-hover:scale-105 duration-500">
-            <Shield class="w-6 h-6 text-white" />
+            <PhShieldCheck class="w-6 h-6 text-white" />
           </div>
           <div class="flex flex-col -space-y-1">
             <span class="text-lg font-black text-white tracking-tight uppercase">Optikom</span>
@@ -39,7 +38,7 @@ async function logout() {
             target="_blank" 
             class="hidden sm:inline-flex items-center gap-2.5 text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-white px-4 py-2.5 rounded-xl hover:bg-white/5 transition-all border border-transparent hover:border-white/5"
           >
-            <ExternalLink class="w-3.5 h-3.5" />
+            <PhArrowSquareOut class="w-3.5 h-3.5" />
             Перейти на сайт
           </NuxtLink>
 
@@ -50,7 +49,7 @@ async function logout() {
             @click="logout" 
             class="inline-flex items-center gap-2.5 text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-red-400 px-4 py-2.5 rounded-xl hover:bg-red-500/5 transition-all border border-transparent hover:border-red-500/10"
           >
-            <LogOut class="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <PhSignOut class="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span class="hidden md:inline">Выйти</span>
           </button>
         </div>
