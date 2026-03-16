@@ -66,10 +66,9 @@ export default defineNuxtConfig({
   },
   nitro: {
     storage: {
-      db: {
-        driver: 'fs',
-        base: './.data/db'
-      }
+      db: process.env.VERCEL 
+        ? { driver: 'vercel-kv' } 
+        : { driver: 'fs', base: './.data/db' }
     },
     serverAssets: [
       {
