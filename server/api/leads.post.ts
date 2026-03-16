@@ -118,7 +118,11 @@ export default defineEventHandler(async (event) => {
     await storage.setItem(leadId, { id: leadId, name, phone, createdAt: new Date().toISOString() })
   } catch (e) { }
 
-  return { success: true }
+  return { 
+    success: true, 
+    pdf: pdfBuffer ? pdfBuffer.toString('base64') : null,
+    fileName: `Optikom_CP_${name.replace(/\s+/g, '_')}.pdf`
+  }
 })
 
 function escapeHtml(str: any): string {

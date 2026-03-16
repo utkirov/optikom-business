@@ -84,7 +84,7 @@ export async function generateCP(data: CPData): Promise<Buffer> {
 
   console.log('[PDF Gen] Starting generation with locale:', locale)
 
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
         const doc = new PDFDocument({ 
             margin: 0,
@@ -103,10 +103,28 @@ export async function generateCP(data: CPData): Promise<Buffer> {
             reject(err)
         })
 
-        const fontRegular = path.join(process.cwd(), 'server/assets/fonts/Roboto-Regular.ttf')
-        const fontBold = path.join(process.cwd(), 'server/assets/fonts/Roboto-Bold.ttf')
+        const storage = useStorage('assets')
+        
+        // Multi-environment font lookup (Vercel uses assets:fonts, Local uses assets:server:fonts)
+        const getFont = async (name: string) => {
+            const keys = [`fonts:${name}`, `server:fonts:${name}`]
+            for (const key of keys) {
+                const buffer = await storage.getItemRaw(key)
+                if (buffer) return buffer
+            }
+            return null
+        }
 
-        console.log('[PDF Gen] Using fonts:', { fontRegular, fontBold })
+        const [fontRegular, fontBold] = await Promise.all([
+            getFont('Roboto-Regular.ttf'),
+            getFont('Roboto-Bold.ttf')
+        ])
+
+        if (!fontRegular || !fontBold) {
+            throw new Error('Fonts not found in server assets')
+        }
+
+        console.log('[PDF Gen] Loaded fonts as Buffers')
 
         const primaryColor = '#4F46E5'   // Indigo 500
         const bgDark = '#0F172A'        // Slate 900

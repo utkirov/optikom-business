@@ -70,7 +70,13 @@ export default defineNuxtConfig({
         driver: 'fs',
         base: './.data/db'
       }
-    }
+    },
+    serverAssets: [
+      {
+        baseName: 'fonts',
+        dir: './server/assets/fonts'
+      }
+    ]
   },
   runtimeConfig: {
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
