@@ -83,6 +83,21 @@ const showLangMenu = ref(false)
             <a href="#products" @click="isMobileMenuOpen = false" class="text-white font-medium text-lg hover:text-indigo-400 py-2 border-b border-white/5">{{ $t('nav.projects') }}</a>
             <a href="#tariffs" @click="isMobileMenuOpen = false" class="text-white font-medium text-lg hover:text-indigo-400 py-2 border-b border-white/5">{{ $t('nav.services') }}</a>
             <a href="#process" @click="isMobileMenuOpen = false" class="text-white font-medium text-lg hover:text-indigo-400 py-2 border-b border-white/5">{{ $t('nav.questions') }}</a>
+            <!-- Mobile Language Switcher -->
+            <div class="flex items-center gap-2 py-2 border-b border-white/5">
+              <PhTranslate class="w-4 h-4 text-slate-400" />
+              <div class="flex gap-2">
+                <NuxtLink
+                  v-for="l in locales" :key="l.code"
+                  :to="switchLocalePath(l.code)"
+                  @click="isMobileMenuOpen = false"
+                  class="px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest transition-colors"
+                  :class="locale === l.code ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30' : 'text-slate-500 hover:text-white'"
+                >
+                  {{ l.code }}
+                </NuxtLink>
+              </div>
+            </div>
             <a href="#contact" @click="isMobileMenuOpen = false" class="inline-flex justify-center mt-4 px-6 py-4 bg-indigo-500 hover:bg-indigo-400 text-white rounded-[1.25rem] font-bold transition-all shadow-[0_0_20px_rgba(84,99,255,0.3)] text-lg">
               {{ $t('nav.contact') }}
             </a>

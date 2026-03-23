@@ -25,6 +25,11 @@ export const defaultSettings = {
     address: 'Ташкент, Узбекистан',
     email: 'info@optikom.biz'
   },
+  social: {
+    telegram: '',
+    facebook: '',
+    instagram: ''
+  },
   seo: {
     title: 'Optikom Business',
     description: 'Управляемые IT и телеком услуги. Единый подрядчик для вашего офиса.',

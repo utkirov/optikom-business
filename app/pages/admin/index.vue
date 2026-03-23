@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import { PhLayout, PhGear, PhKey, PhMagnifyingGlass, PhGlobe as PhGlobeIcon, PhLock } from '@phosphor-icons/vue'
 
 definePageMeta({ layout: 'admin', middleware: 'admin' })
 
@@ -16,12 +17,12 @@ const status = ref<'idle' | 'saving' | 'saved' | 'error'>('idle')
 const errorMessage = ref('')
 
 const tabs = [
-  { id: 'hero',     label: 'Главный экран',     icon: 'PhLayout' },
-  { id: 'tariffs',  label: 'Тарифы и услуги',   icon: 'PhGear' },
-  { id: 'content',  label: 'Контент и FAQ',    icon: 'PhKey' },
-  { id: 'leads',    label: 'Заявки',           icon: 'PhMagnifyingGlass' },
-  { id: 'contacts', label: 'SEO и Контакты',   icon: 'PhGlobe' },
-  { id: 'security', label: 'Безопасность',    icon: 'PhLock' },
+  { id: 'hero',     label: 'Главный экран',     icon: PhLayout },
+  { id: 'tariffs',  label: 'Тарифы и услуги',   icon: PhGear },
+  { id: 'content',  label: 'Контент и FAQ',    icon: PhKey },
+  { id: 'leads',    label: 'Заявки',           icon: PhMagnifyingGlass },
+  { id: 'contacts', label: 'SEO и Контакты',   icon: PhGlobeIcon },
+  { id: 'security', label: 'Безопасность',    icon: PhLock },
 ]
 
 const passwordForm = ref({
@@ -29,6 +30,12 @@ const passwordForm = ref({
   new: '',
   confirm: ''
 })
+
+async function deleteLead(id: string) {
+  if (!confirm('Удалить эту заявку? Данные будут удалены без возможности восстановления.')) return
+  await $fetch('/api/admin/leads', { method: 'DELETE', body: { id } })
+  await refreshLeads()
+}
 
 async function changePassword() {
   if (passwordForm.value.new !== passwordForm.value.confirm) {
@@ -206,7 +213,7 @@ function removeService(i: any) { form.value.tariffs.extraServices.splice(i, 1) }
                   </div>
                   <div class="flex-[2]">
                     <label class="admin-label-sm">Цена в месяц (сум)</label>
-                    <input type="number" v-model.number="speed.basePrice" class="admin-input-sm" />
+                    <input type="number" min="0" v-model.number="speed.basePrice" class="admin-input-sm" />
                   </div>
                   <div class="flex items-center gap-4 pb-1 sm:h-[42px]">
                     <label class="flex items-center gap-3 px-3 py-2 bg-gray-950/80 border border-white/5 rounded-xl cursor-pointer hover:bg-violet-900/10 transition-colors">
@@ -238,14 +245,14 @@ function removeService(i: any) { form.value.tariffs.extraServices.splice(i, 1) }
               <div class="space-y-3">
                 <label class="admin-label">Цена за 1 ПК (сум)</label>
                 <div class="relative">
-                  <input type="number" v-model.number="form.tariffs.itServiceBasePrice" class="admin-input pr-16" />
+                  <input type="number" min="0" v-model.number="form.tariffs.itServiceBasePrice" class="admin-input pr-16" />
                   <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-700">UZS</span>
                 </div>
               </div>
               <div class="space-y-3">
                 <label class="admin-label">Наценка Premium SLA (%)</label>
                 <div class="relative">
-                  <input type="number" v-model.number="form.tariffs.slaPremiumMargin" class="admin-input pr-16" />
+                  <input type="number" min="0" max="100" v-model.number="form.tariffs.slaPremiumMargin" class="admin-input pr-16" />
                   <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-700">%</span>
                 </div>
               </div>
@@ -281,7 +288,7 @@ function removeService(i: any) { form.value.tariffs.extraServices.splice(i, 1) }
                   </div>
                   <div class="flex-[1.5]">
                     <label class="admin-label-sm">Стоимость (сум)</label>
-                    <input type="number" v-model.number="svc.price" class="admin-input-sm" />
+                    <input type="number" min="0" v-model.number="svc.price" class="admin-input-sm" />
                   </div>
                   <div class="flex-1">
                     <label class="admin-label-sm">Иконка</label>
@@ -384,6 +391,13 @@ function removeService(i: any) { form.value.tariffs.extraServices.splice(i, 1) }
                       <div class="font-bold text-indigo-400 pt-1">Итого: {{ lead.tariffDetails.totalPrice }} сум</div>
                     </div>
                   </div>
+                  <button
+                    @click="deleteLead(lead.id)"
+                    class="self-start p-2 text-slate-700 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all"
+                    title="Удалить лид (GDPR)"
+                  >
+                    <PhTrash class="w-4 h-4" />
+                  </button>
                 </div>
               </div>
               <div v-if="!leads?.length" class="py-20 text-center">
@@ -466,6 +480,23 @@ function removeService(i: any) { form.value.tariffs.extraServices.splice(i, 1) }
               <div class="space-y-3">
                 <label class="admin-label">Адрес</label>
                 <input type="text" v-model="form.contacts.address" class="admin-input" />
+              </div>
+              <div class="pt-4 border-t border-white/5">
+                <p class="admin-label mb-4">Социальные сети</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="space-y-3">
+                    <label class="admin-label">Telegram</label>
+                    <input type="text" v-model="form.social.telegram" class="admin-input" placeholder="https://t.me/..." />
+                  </div>
+                  <div class="space-y-3">
+                    <label class="admin-label">Facebook</label>
+                    <input type="text" v-model="form.social.facebook" class="admin-input" placeholder="https://fb.com/..." />
+                  </div>
+                  <div class="space-y-3">
+                    <label class="admin-label">Instagram</label>
+                    <input type="text" v-model="form.social.instagram" class="admin-input" placeholder="https://instagram.com/..." />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

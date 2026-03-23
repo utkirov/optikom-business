@@ -49,7 +49,7 @@
     "title": "Tezkor Internet va ishonchli IT-qo'llab-quvvatlash",
     "description": "Biz sizning biznesingizning barcha IT-infratuzilmasini o'z zimmamizga olamiz. Tizimdagi nosozliklar va to'xtab qolishlar haqida unuting - biz bilan hammasi soat kabi ishlaydi.",
     "button": "Narxni hisoblash",
-    "calc": "Hisoblash",
+    "calc": "Tariflarni ko'rish",
     "cards": {
       "infrastructure": {
         "label": "Infratuzilma",
@@ -145,7 +145,11 @@
       "submit": "So'rov yuborish",
       "sending": "Yuborilmoqda...",
       "success": "So'rovingiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.",
-      "error": "Xatolik yuz berdi. Qayta urinib ko'ring yoki bizga qo'ng'iroq qiling."
+      "error": "Xatolik yuz berdi. Qayta urinib ko'ring yoki bizga qo'ng'iroq qiling.",
+      "gdpr": "Men maxfiylik siyosatiga muvofiq shaxsiy ma'lumotlarni qayta ishlashga roziman",
+      "gdpr_link": "maxfiylik siyosati",
+      "phone_error": "Iltimos, to'liq telefon raqamini kiriting",
+      "pdf_download": "Tijorat taklifini yuklab olish (PDF)"
     },
     "address": "Toshkent sh., Shota Rustaveli ko'ch., 1-o'tish yo'li, 6",
     "copyright": "© 2026 OPTIKOM BUSINESS. Barcha huquqlar himoyalangan."
@@ -153,6 +157,7 @@
   "faqs": {
     "title": "Savollar va javoblar",
     "subtitle": "Bizning ish tartibimiz haqida bilishingiz kerak bo'lgan hamma narsa.",
+    "empty": "Hozircha savollar yo'q",
     "items": [
       {
         "question": "So'rovlarga qanchalik tez javob berasiz?",
@@ -240,6 +245,7 @@
       "zap": "Javob berish vaqti"
     },
     "location": "Toshkent sh., O'zbekiston",
+    "hq_label": "Optikom Bosh ofisi",
     "status": {
       "active": "Tarmoq faol",
       "monitoring": "Butun respublika bo'ylab monitoring 24/7"
@@ -271,6 +277,9 @@
       "standard_desc": "Reglamentlangan javob vaqti va kecha-yu kunduz monitoring.",
       "tier_standard": "Standart (kiritilgan)",
       "tier_premium": "Premium 24/7"
+    },
+    "camera": {
+      "unit": "dona"
     },
     "extra": {
       "title": "Qo'shimcha xizmatlar",

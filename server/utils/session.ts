@@ -1,5 +1,5 @@
-import { createHmac } from 'crypto'
+import { randomBytes } from 'crypto'
 
-export function generateAdminToken(password: string, secret: string) {
-  return createHmac('sha256', secret).update(password).digest('hex')
+export function generateSessionToken(): string {
+  return randomBytes(32).toString('hex')
 }

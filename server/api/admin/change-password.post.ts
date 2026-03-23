@@ -1,32 +1,38 @@
+import bcrypt from 'bcryptjs'
+const { compare, hash } = bcrypt
 import { requireAdminSession } from '../../utils/auth'
 
 export default defineEventHandler(async (event) => {
-  requireAdminSession(event)
+  await requireAdminSession(event)
 
   const { currentPassword, newPassword } = await readBody(event)
   const config = useRuntimeConfig()
   const storage = useStorage('db')
 
-  // 1. Get current password from DB or config
-  const storedPassword = await storage.getItem('admin_password') as string || config.adminPassword
+  const storedValue = await storage.getItem('admin_password') as string | null
 
-  // 2. Validate current password
-  if (currentPassword !== storedPassword) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Текущий пароль указан неверно'
-    })
+  // Проверяем текущий пароль (поддержка bcrypt и plain text для миграции)
+  let isValid = false
+  if (storedValue) {
+    try {
+      isValid = await compare(currentPassword, storedValue)
+    } catch {
+      isValid = currentPassword === storedValue
+    }
+  } else {
+    isValid = currentPassword === String(config.adminPassword)
+  }
+
+  if (!isValid) {
+    throw createError({ statusCode: 400, statusMessage: 'Текущий пароль указан неверно' })
   }
 
   if (!newPassword || newPassword.length < 4) {
-    throw createError({
-      statusCode: 400,
-      statusMessage: 'Новый пароль слишком короткий (минимум 4 символа)'
-    })
+    throw createError({ statusCode: 400, statusMessage: 'Новый пароль слишком короткий (минимум 4 символа)' })
   }
 
-  // 3. Save new password to DB
-  await storage.setItem('admin_password', newPassword)
+  // Сохраняем хешированный пароль
+  await storage.setItem('admin_password', await hash(newPassword, 12))
 
   return { success: true }
 })

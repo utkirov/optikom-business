@@ -49,7 +49,7 @@
     "title": "Fast Internet and Reliable IT Support",
     "description": "We take over the entire IT infrastructure of your business. Forget about system failures and downtime - with us everything works like clockwork.",
     "button": "Calculate Cost",
-    "calc": "Calculate",
+    "calc": "View Tariffs",
     "cards": {
       "infrastructure": {
         "label": "Infrastructure",
@@ -145,7 +145,11 @@
       "submit": "Submit application",
       "sending": "Sending...",
       "success": "Your application has been successfully sent! We will contact you soon.",
-      "error": "An error occurred. Try again or call us."
+      "error": "An error occurred. Try again or call us.",
+      "gdpr": "I agree to the processing of personal data in accordance with the",
+      "gdpr_link": "privacy policy",
+      "phone_error": "Please enter a complete phone number",
+      "pdf_download": "Download commercial proposal (PDF)"
     },
     "address": "Tashkent city, Shota Rustaveli str., 1st pass., 6",
     "copyright": "© 2026 OPTIKOM BUSINESS. All rights reserved."
@@ -153,6 +157,7 @@
   "faqs": {
     "title": "Questions and Answers",
     "subtitle": "All you need to know about our approach to work.",
+    "empty": "No questions yet",
     "items": [
       {
         "question": "How quickly do you respond to requests?",
@@ -240,6 +245,7 @@
       "zap": "Reaction time"
     },
     "location": "Tashkent, Uzbekistan",
+    "hq_label": "Optikom Head Office",
     "status": {
       "active": "Network active",
       "monitoring": "Monitoring throughout the republic 24/7"
@@ -271,6 +277,9 @@
       "standard_desc": "Regulated reaction time and round-the-clock monitoring.",
       "tier_standard": "Standard (incl)",
       "tier_premium": "Premium 24/7"
+    },
+    "camera": {
+      "unit": "pcs"
     },
     "extra": {
       "title": "Additional services",

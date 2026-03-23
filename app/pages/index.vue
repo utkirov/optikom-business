@@ -14,8 +14,11 @@ import Faq from '../components/Faq.vue'
 import MapComponent from '../components/MapComponent.vue'
 import ProcessEquipment from '../components/ProcessEquipment.vue'
 import ContactFooter from '../components/ContactFooter.vue'
+import ScrollToTop from '../components/ScrollToTop.vue'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
+
+const localeToOg: Record<string, string> = { ru: 'ru_RU', uz: 'uz_UZ', en: 'en_US' }
 
 useSeoMeta({
   title: () => t('seo.title'),
@@ -24,6 +27,7 @@ useSeoMeta({
   ogDescription: () => t('seo.description'),
   ogType: 'website',
   ogUrl: 'https://optikom.biz',
+  ogLocale: () => localeToOg[locale.value] || 'ru_RU',
   twitterCard: 'summary_large_image',
   twitterTitle: () => t('seo.title'),
   twitterDescription: () => t('seo.description'),
@@ -66,6 +70,9 @@ useSeoMeta({
 
     <!-- 11. Target, Advantages & Lead Form / Footer -->
     <ContactFooter />
+
+    <!-- Scroll to top -->
+    <ScrollToTop />
   </div>
 </template>
 

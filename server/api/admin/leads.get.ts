@@ -2,7 +2,7 @@ import { requireAdminSession } from '../../utils/auth'
 
 export default defineEventHandler(async (event) => {
   // Ensure the user is an admin
-  requireAdminSession(event)
+  await requireAdminSession(event)
   
   const storage = useStorage('db')
   const keys = await storage.getKeys('')

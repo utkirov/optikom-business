@@ -33,6 +33,9 @@ const toggleFaq = (index: number) => {
       </ScrollFade>
       
       <div class="space-y-4">
+        <div v-if="faqs.length === 0" class="py-20 text-center">
+          <p class="text-slate-600 font-bold uppercase tracking-widest text-xs">{{ $t('faqs.empty') }}</p>
+        </div>
         <ScrollFade v-for="(faq, index) in faqs" :key="index" :delay="index * 100">
           <div class="bg-gray-900/40 rounded-3xl border border-white/5 overflow-hidden transition-all hover:bg-gray-900 shadow-2xl backdrop-blur-sm group">
             <button 

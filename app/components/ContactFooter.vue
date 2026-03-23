@@ -6,13 +6,14 @@ import { useSettingsStore } from '../stores/settings'
 import { useI18n } from 'vue-i18n'
 import ScrollFade from './ScrollFade.vue'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 
 const store = useSettingsStore()
 const { settings } = storeToRefs(store)
 
 const status = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
 const errorMessage = ref('')
+const gdprConsent = ref(false)
 const form = ref({
   name: '',
   company: '',
@@ -51,6 +52,14 @@ const handlePhoneInput = (e: Event) => {
 }
 
 const submitForm = async () => {
+  // Validate phone completeness (must be +998 XX XXX XX XX = 12 digits)
+  const digits = form.value.phone.replace(/\D/g, '')
+  if (digits.length < 12) {
+    status.value = 'error'
+    errorMessage.value = t('contact.form.phone_error')
+    return
+  }
+
   status.value = 'loading'
   cpFile.value = null
   errorMessage.value = ''
@@ -80,6 +89,7 @@ const submitForm = async () => {
         cpFile.value = { data: response.pdf, name: response.fileName }
       }
       form.value = { name: '', company: '', phone: '', message: '', tariffDetails: {} }
+      gdprConsent.value = false
       setTimeout(() => { if (status.value === 'success') status.value = 'idle' }, 10000)
     }
   } catch (e: any) {
@@ -147,7 +157,15 @@ const submitForm = async () => {
                 <textarea v-model="form.message" :placeholder="$t('contact.form.message')" rows="4" class="bg-gray-950/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium placeholder:text-slate-600 block w-full outline-none"></textarea>
               </div>
               
-              <button type="submit" :disabled="status === 'loading'" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 disabled:bg-indigo-500/50 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 transition-all shadow-xl shadow-indigo-500/20 btn-hover-scale">
+              <label class="flex items-start gap-3 cursor-pointer group">
+                <input v-model="gdprConsent" type="checkbox" required class="mt-1 w-4 h-4 accent-indigo-500 shrink-0 rounded border-white/10" />
+                <span class="text-xs text-slate-500 group-hover:text-slate-400 transition-colors leading-relaxed">
+                  {{ $t('contact.form.gdpr') }}
+                  <a href="/privacy" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2" target="_blank">{{ $t('contact.form.gdpr_link') }}</a>
+                </span>
+              </label>
+
+              <button type="submit" :disabled="status === 'loading' || !gdprConsent" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 disabled:bg-indigo-500/50 disabled:cursor-not-allowed text-white rounded-2xl font-bold flex items-center justify-center space-x-3 transition-all shadow-xl shadow-indigo-500/20 btn-hover-scale">
                 <PhCircleNotch v-if="status === 'loading'" class="w-5 h-5 animate-spin" />
                 <PhPaperPlaneTilt v-else class="w-5 h-5" />
                 <span>{{ status === 'loading' ? $t('contact.form.sending') : $t('contact.form.submit') }}</span>
@@ -159,14 +177,14 @@ const submitForm = async () => {
                     <PhCheckCircle class="w-5 h-5 text-emerald-500 shrink-0" />
                     <p class="text-emerald-400 text-sm font-medium">{{ $t('contact.form.success') }}</p>
                   </div>
-                  <button 
+                  <button
                     v-if="cpFile"
-                    @click="downloadCP" 
+                    @click="downloadCP"
                     type="button"
-                    class="w-full py-4 bg-indigo-500 hover:bg-indigo-400 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 transition-all shadow-xl shadow-indigo-500/20 active:scale-[0.98] animate-bounce-subtle"
+                    class="w-full py-4 bg-indigo-500 hover:bg-indigo-400 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 transition-all shadow-xl shadow-indigo-500/20 active:scale-[0.98] animate-glow-pulse"
                   >
                     <PhPaperPlaneTilt class="w-5 h-5 rotate-180" />
-                    <span>Скачайте ваше предложение (PDF)</span>
+                    <span>{{ $t('contact.form.pdf_download') }}</span>
                   </button>
                 </div>
                 <div v-else-if="status === 'error'" class="mt-4 p-4 bg-red-500/10 border border-red-500/20 rounded-2xl">
@@ -188,15 +206,15 @@ const submitForm = async () => {
         <div class="flex flex-col items-center md:items-start">
           <div class="flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition-colors font-bold text-lg mb-2">
             <PhPhoneCall class="w-5 h-5" />
-            <a href="tel:+998712000202">+998 (71) 200-02-02</a>
+            <a :href="`tel:${(settings?.contacts?.phone || '').replace(/\D/g, '').replace(/^/, '+')}`">{{ settings?.contacts?.phone || '+998 (71) 000-00-00' }}</a>
           </div>
           <p class="text-slate-600 text-sm font-medium">{{ $t('contact.address') }}</p>
         </div>
         
         <div class="flex items-center space-x-6">
-          <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">TG</a>
-          <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">FB</a>
-          <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">IN</a>
+          <a v-if="settings?.social?.telegram" :href="settings.social.telegram" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">TG</a>
+          <a v-if="settings?.social?.facebook" :href="settings.social.facebook" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">FB</a>
+          <a v-if="settings?.social?.instagram" :href="settings.social.instagram" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white/5 hover:bg-indigo-500 flex items-center justify-center transition-all border border-white/5 font-bold text-white text-xs">IN</a>
         </div>
         
         <p class="text-slate-600 text-xs font-bold uppercase tracking-widest">{{ $t('contact.copyright') }}</p>

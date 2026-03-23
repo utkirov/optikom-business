@@ -11,7 +11,7 @@ import {
   PhDesktop,
   PhWifiHigh
 } from '@phosphor-icons/vue'
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 import { useState } from '#app'
 import { storeToRefs } from 'pinia'
 import { useSettingsStore } from '../stores/settings'
@@ -100,14 +100,21 @@ const toggleService = (id: string) => {
 
 // Pass state to form
 const savedTariffData = useState('tariffDetails', () => null as any)
+let lsDebounceTimer: ReturnType<typeof setTimeout> | null = null
+
+onUnmounted(() => {
+  if (lsDebounceTimer) clearTimeout(lsDebounceTimer)
+})
+
 const saveAndScrollToForm = (e: Event) => {
+  e.preventDefault()
   // Save current calculator state for the contact form
   const data = {
     internet: selectedSpeed.value.label,
     itService: `${t('calc.sum.it_service')} (${deviceCount.value} ${t('calc.devices.unit')})${slaPremium.value ? (isSlaBonus.value ? ` + ${t('calc.sla.tier_premium')} (${t('calc.sla.bonus')})` : ` + ${t('calc.sla.tier_premium')}`) : ''}`,
     extraServices: selectedServices.value.map(id => {
       const s = services.value.find((svc: any) => svc.id === id)
-      if (id === 'cctv') return `${s?.label || id} (${cameraCount.value} шт.)`
+      if (id === 'cctv') return `${s?.label || id} (${cameraCount.value} ${t('calc.camera.unit')})`
       return s?.label || id
     }),
     totalPrice: formatPrice(totalMonthlySum.value + totalOneTimeSum.value),
@@ -115,7 +122,13 @@ const saveAndScrollToForm = (e: Event) => {
     monthlyPrice: formatPrice(totalMonthlySum.value)
   }
   savedTariffData.value = data
-  localStorage.setItem('last_tariff_calculation', JSON.stringify(data))
+  // Debounced localStorage write
+  if (lsDebounceTimer) clearTimeout(lsDebounceTimer)
+  lsDebounceTimer = setTimeout(() => {
+    localStorage.setItem('last_tariff_calculation', JSON.stringify(data))
+  }, 300)
+  // Smooth scroll to contact form
+  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
@@ -329,7 +342,7 @@ const saveAndScrollToForm = (e: Event) => {
 
                   <div v-if="videoMaintenanceCost > 0" class="flex justify-between items-end border-b border-white/5 pb-2 ml-1">
                     <div>
-                      <span class="block text-slate-500 text-xs font-medium mb-1">{{ $t('calc.sum.cctv_maint') }} ({{ cameraCount }} шт)</span>
+                      <span class="block text-slate-500 text-xs font-medium mb-1">{{ $t('calc.sum.cctv_maint') }} ({{ cameraCount }} {{ $t('calc.camera.unit') }})</span>
                     </div>
                     <div class="font-bold text-slate-200 text-sm">{{ formatPrice(videoMaintenanceCost) }} <span class="text-[10px] text-slate-500 font-medium italic">{{ $t('calc.sum.currency_unit') }}</span></div>
                   </div>
@@ -348,7 +361,7 @@ const saveAndScrollToForm = (e: Event) => {
                   
                   <div class="flex justify-between items-end border-b border-white/5 pb-2 ml-1">
                     <div>
-                      <span class="block text-slate-500 text-xs font-medium mb-1">{{ $t('calc.sum.cctv_install') }} ({{ cameraCount }} шт)</span>
+                      <span class="block text-slate-500 text-xs font-medium mb-1">{{ $t('calc.sum.cctv_install') }} ({{ cameraCount }} {{ $t('calc.camera.unit') }})</span>
                     </div>
                     <div class="font-bold text-slate-200 text-sm">{{ formatPrice(videoInstallationCost) }} <span class="text-[10px] text-slate-500 font-medium italic">{{ $t('calc.sum.currency_unit') }}</span></div>
                   </div>
@@ -374,7 +387,7 @@ const saveAndScrollToForm = (e: Event) => {
                   </div>
                 </div>
 
-                <a href="#contact" @click="saveAndScrollToForm" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 text-white rounded-[1.25rem] font-bold text-center transition-all shadow-[0_0_30px_rgba(84,99,255,0.3)] flex items-center justify-center space-x-2 btn-hover-scale animate-glow-pulse">
+                <a href="#contact" @click="saveAndScrollToForm" class="w-full py-5 bg-indigo-500 hover:bg-indigo-400 text-white rounded-[1.25rem] font-bold text-center transition-all shadow-[0_0_30px_rgba(84,99,255,0.3)] flex items-center justify-center space-x-2 btn-hover-scale">
                   <span>{{ $t('calc.sum.button') }}</span>
                   <PhArrowRight class="w-5 h-5" />
                 </a>

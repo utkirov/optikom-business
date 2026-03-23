@@ -1,11 +1,14 @@
-import { generateAdminToken } from './session'
-
-export function requireAdminSession(event: any) {
-  const config = useRuntimeConfig()
+export async function requireAdminSession(event: any) {
   const token = getCookie(event, 'admin_token')
-  const expectedToken = generateAdminToken(config.adminPassword, config.jwtSecret as string)
 
-  if (!token || token !== expectedToken) {
+  if (!token) {
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
+  }
+
+  const storage = useStorage('db')
+  const storedToken = await storage.getItem('session_admin') as string | null
+
+  if (!storedToken || storedToken !== token) {
     throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
   }
 }
