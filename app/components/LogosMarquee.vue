@@ -30,14 +30,14 @@ const trustLogos: LogoItem[] = [
       <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">{{ $t('logos.title') }}</p>
     </div>
     <div class="overflow-hidden w-full">
-    <div class="flex w-[200%] animate-scroll-left opacity-50 hover:opacity-100 transition-opacity duration-500" style="will-change: transform;">
-      <div class="w-1/2 flex justify-around items-center px-2 sm:px-4 gap-3 sm:gap-6 md:gap-8">
-        <img v-for="(logo, i) in trustLogos.slice(0, 8)" :key="i" :src="logo.image" :alt="logo.name" class="h-8 sm:h-10 md:h-12 object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
+      <div class="flex min-w-max animate-scroll-left opacity-50 hover:opacity-100 transition-opacity duration-500" style="will-change: transform;">
+        <div class="flex items-center gap-12 px-6">
+          <img v-for="(logo, i) in trustLogos.slice(0, 8)" :key="i" :src="logo.image" :alt="logo.name" class="h-[24px] max-w-[100px] object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
+        </div>
+        <div class="flex items-center gap-12 px-6">
+          <img v-for="(logo, i) in trustLogos.slice(8)" :key="i" :src="logo.image" :alt="logo.name" class="h-[24px] max-w-[100px] object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
+        </div>
       </div>
-      <div class="w-1/2 flex justify-around items-center px-2 sm:px-4 gap-3 sm:gap-6 md:gap-8">
-        <img v-for="(logo, i) in trustLogos.slice(8)" :key="i" :src="logo.image" :alt="logo.name" class="h-8 sm:h-10 md:h-12 object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
-      </div>
-    </div>
     </div>
   </section>
 </template>
