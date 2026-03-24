@@ -82,8 +82,6 @@ export async function generateCP(data: CPData): Promise<Buffer> {
   const locale = data.locale || 'ru'
   const t = translations[locale] || translations.ru
 
-  console.log('[PDF Gen] Starting generation with locale:', locale)
-
   return new Promise(async (resolve, reject) => {
     try {
         const doc = new PDFDocument({ 
@@ -95,7 +93,6 @@ export async function generateCP(data: CPData): Promise<Buffer> {
         const chunks: Buffer[] = []
         doc.on('data', (chunk) => chunks.push(chunk))
         doc.on('end', () => {
-            console.log('[PDF Gen] Stream ended. Total size:', Buffer.concat(chunks).length)
             resolve(Buffer.concat(chunks))
         })
         doc.on('error', (err) => {
@@ -123,8 +120,6 @@ export async function generateCP(data: CPData): Promise<Buffer> {
         if (!fontRegular || !fontBold) {
             throw new Error('Fonts not found in server assets')
         }
-
-        console.log('[PDF Gen] Loaded fonts as Buffers')
 
         const primaryColor = '#4F46E5'   // Indigo 500
         const bgDark = '#0F172A'        // Slate 900
@@ -215,7 +210,6 @@ export async function generateCP(data: CPData): Promise<Buffer> {
 
         doc.fillColor(textMuted).font(fontRegular).fontSize(8).text(t.disclaimer, 40, 780, { align: 'center', width: 515 })
 
-        console.log('[PDF Gen] Ending document...')
         doc.end()
     } catch (e: any) {
         console.error('[PDF Gen] Initialization FAILED:', e)

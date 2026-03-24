@@ -19,15 +19,9 @@ export default defineNuxtConfig({
   experimental: {
     appManifest: false
   },
-//   seo: {
-//     fallbackTitle: 'Optikom Business — IT для Вашего Бизнеса',
-//   },
   ogImage: {
-    enabled: false as any,
+    enabled: false,
   },
-//   sitemap: {
-//     hostname: 'https://optikom.biz' as any
-//   },
   i18n: {
     locales: [
       { code: 'ru', name: 'Русский', file: 'ru.json' },
@@ -37,9 +31,6 @@ export default defineNuxtConfig({
     defaultLocale: 'ru',
     strategy: 'prefix_except_default',
     langDir: '../i18n/locales/'
-  },
-  build: {
-    transpile: []
   },
   googleFonts: {
     families: {

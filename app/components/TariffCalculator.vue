@@ -134,7 +134,6 @@ const saveAndScrollToForm = (e: Event) => {
 
 <template>
   <section id="tariffs" class="py-24 bg-gray-950 border-t border-white/5 relative overflow-hidden">
-    <!-- Glow effects -->
     <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -149,11 +148,9 @@ const saveAndScrollToForm = (e: Event) => {
       </ScrollFade>
 
       <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
-        <!-- LEFT: Controls -->
         <div class="w-full lg:w-3/5 space-y-10">
           
           <ScrollFade :delay="100">
-            <!-- Speed Selection -->
             <div class="bg-gray-900/40 rounded-3xl p-6 md:p-8 border border-white/5 shadow-2xl backdrop-blur-sm">
               <h3 class="text-xl font-bold text-white mb-6 flex items-center">
                 <PhGlobe class="w-6 h-6 mr-3 text-indigo-500"/> {{ $t('calc.internet.title') }}
@@ -175,7 +172,6 @@ const saveAndScrollToForm = (e: Event) => {
 
           <ScrollFade :delay="200">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- Devices Slider -->
               <div class="bg-gray-900/40 rounded-3xl p-6 md:p-8 border border-white/5 shadow-2xl backdrop-blur-sm">
                 <div class="flex justify-between items-center mb-6">
                   <h3 class="text-xl font-bold text-white flex items-center">
@@ -185,7 +181,6 @@ const saveAndScrollToForm = (e: Event) => {
                     {{ deviceCount }}
                   </div>
                 </div>
-                <!-- Range Slider -->
                 <div class="relative pt-4 pb-2">
                   <input 
                     type="range" 
@@ -201,7 +196,6 @@ const saveAndScrollToForm = (e: Event) => {
                 </div>
               </div>
 
-              <!-- SLA Level Toggle -->
               <div class="bg-indigo-950/40 rounded-3xl p-6 md:p-8 border border-indigo-500/20 shadow-2xl relative overflow-hidden group backdrop-blur-md">
                 <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-[40px] group-hover:bg-indigo-500/20 transition-all"></div>
                 <h3 class="text-xl font-bold text-white mb-2 flex items-center relative z-10">
@@ -233,7 +227,6 @@ const saveAndScrollToForm = (e: Event) => {
           </ScrollFade>
 
           <ScrollFade :delay="300">
-            <!-- Extra Services -->
             <div class="bg-gray-900/40 rounded-3xl p-6 md:p-8 border border-white/5 shadow-2xl backdrop-blur-sm">
               <h3 class="text-xl font-bold text-white mb-6 flex items-center">
                 <PhPlusCircle class="w-6 h-6 mr-3 text-indigo-500"/> {{ $t('calc.extra.title') }}
@@ -257,7 +250,6 @@ const saveAndScrollToForm = (e: Event) => {
                 </div>
               </div>
 
-              <!-- CCTV Sub-menu -->
               <transition
                 enter-active-class="transition duration-300 ease-out"
                 enter-from-class="transform -translate-y-4 opacity-0"
@@ -302,7 +294,6 @@ const saveAndScrollToForm = (e: Event) => {
 
         </div>
 
-        <!-- RIGHT: Receipt / Checkout -->
         <div class="w-full lg:w-2/5">
           <ScrollFade direction="left" :delay="200" class="h-full">
             <div class="sticky top-28 bg-gray-900/60 rounded-[2.5rem] p-8 md:p-10 border border-white/5 shadow-2xl backdrop-blur-md h-full flex flex-col">
@@ -319,7 +310,6 @@ const saveAndScrollToForm = (e: Event) => {
 
               <div class="space-y-6 flex-grow">
                 
-                <!-- Monthly Services -->
                 <div class="space-y-4">
                   <span class="block text-[10px] font-black text-indigo-400 uppercase tracking-widest px-1">{{ $t('calc.sum.monthly_label') }}</span>
                   
@@ -355,7 +345,6 @@ const saveAndScrollToForm = (e: Event) => {
                   </div>
                 </div>
 
-                <!-- One-time Services -->
                 <div v-if="totalOneTimeSum > 0" class="space-y-4 mt-6">
                   <span class="block text-[10px] font-black text-amber-500 uppercase tracking-widest px-1">{{ $t('calc.sum.onetime_label') }}</span>
                   
@@ -401,15 +390,12 @@ const saveAndScrollToForm = (e: Event) => {
         </div>
       </div>
 
-      <!-- Comparison Block -->
       <ScrollFade :delay="400">
         <div class="mt-24 max-w-5xl mx-auto relative group">
-          <!-- decorative blur bg -->
           <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
           
           <div class="relative bg-gray-900/60 rounded-[3rem] p-8 md:p-12 border border-white/5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden backdrop-blur-md">
             
-            <!-- Sale Badge (Absolute Center) -->
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center hidden md:flex">
               <div class="bg-indigo-600 text-white w-24 h-24 rounded-full flex flex-col items-center justify-center shadow-[0_0_30px_rgba(84,99,255,0.4)] border-4 border-gray-900 rotate-12 group-hover:rotate-0 transition-transform duration-500 group-hover:scale-110">
                 <PhLightning class="w-6 h-6 mb-1 text-yellow-300" />
@@ -425,7 +411,6 @@ const saveAndScrollToForm = (e: Event) => {
                <p class="text-slate-500 mt-4 text-sm font-medium">{{ $t('calc.compare.desc_standard') }}</p>
             </div>
 
-            <!-- Mobile divider -->
             <div class="w-full h-px bg-white/5 md:hidden relative my-4 flex items-center justify-center">
                <div class="bg-indigo-600 px-4 py-2 text-white font-bold rounded-full text-sm">{{ $t('calc.compare.benefit') }}</div>
             </div>

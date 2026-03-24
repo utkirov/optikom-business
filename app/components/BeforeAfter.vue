@@ -12,7 +12,6 @@ import ScrollFade from './ScrollFade.vue'
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Before -->
           <div class="p-8 rounded-3xl bg-gray-900/40 border border-white/5 backdrop-blur-sm group">
             <div class="flex items-center space-x-3 mb-6 transition-transform group-hover:scale-105">
               <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center border border-red-500/20"><PhXCircle class="w-5 h-5 text-red-500"/></div>
@@ -25,7 +24,6 @@ import ScrollFade from './ScrollFade.vue'
             </ul>
           </div>
           
-          <!-- After -->
           <div class="p-8 rounded-3xl bg-indigo-950/40 text-white relative overflow-hidden shadow-2xl border border-indigo-500/20 backdrop-blur-md group">
             <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[60px] group-hover:bg-indigo-500/20 transition-all duration-700"></div>
             <div class="flex items-center space-x-3 mb-6 relative z-10 transition-transform group-hover:scale-105">

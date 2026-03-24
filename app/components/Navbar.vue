@@ -14,7 +14,6 @@ const showLangMenu = ref(false)
 
 <template>
   <div>
-    <!-- Sticky Navbar -->
     <nav class="fixed top-0 w-full z-50 transition-all duration-300"
          :class="isScrolled ? 'bg-indigo-950/90 backdrop-blur-lg shadow-xl py-4 border-b border-indigo-500/20' : 'bg-transparent pt-6 pb-4'">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -25,14 +24,12 @@ const showLangMenu = ref(false)
           <span class="text-xl font-bold tracking-tight text-white">Optikom<span class="text-indigo-500">.Biz</span></span>
         </div>
         
-        <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
           <a href="#about" class="hover:text-white transition-colors">{{ t('nav.mission') }}</a>
           <a href="#products" class="hover:text-white transition-colors">{{ t('nav.projects') }}</a>
           <a href="#tariffs" class="hover:text-white transition-colors">{{ t('nav.services') }}</a>
           <a href="#process" class="hover:text-white transition-colors">{{ t('nav.questions') }}</a>
           
-          <!-- Language Switcher -->
           <div class="relative ml-4">
             <button @click="showLangMenu = !showLangMenu" 
                     class="flex items-center space-x-1 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
@@ -59,7 +56,6 @@ const showLangMenu = ref(false)
           </div>
         </div>
 
-        <!-- Mobile Menu Toggle -->
         <div class="md:hidden flex items-center">
           <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="text-slate-300 hover:text-white focus:outline-none p-2 relative z-50">
             <PhList v-if="!isMobileMenuOpen" class="w-7 h-7" />
@@ -68,7 +64,6 @@ const showLangMenu = ref(false)
         </div>
       </div>
       
-      <!-- Mobile Menu Dropdown -->
       <transition
         enter-active-class="transition duration-300 ease-out"
         enter-from-class="transform -translate-y-4 opacity-0"
@@ -83,7 +78,6 @@ const showLangMenu = ref(false)
             <a href="#products" @click="isMobileMenuOpen = false" class="text-white font-medium text-lg hover:text-indigo-400 py-2 border-b border-white/5">{{ $t('nav.projects') }}</a>
             <a href="#tariffs" @click="isMobileMenuOpen = false" class="text-white font-medium text-lg hover:text-indigo-400 py-2 border-b border-white/5">{{ $t('nav.services') }}</a>
             <a href="#process" @click="isMobileMenuOpen = false" class="text-white font-medium text-lg hover:text-indigo-400 py-2 border-b border-white/5">{{ $t('nav.questions') }}</a>
-            <!-- Mobile Language Switcher -->
             <div class="flex items-center gap-2 py-2 border-b border-white/5">
               <PhTranslate class="w-4 h-4 text-slate-400" />
               <div class="flex gap-2">

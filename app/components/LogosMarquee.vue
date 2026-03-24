@@ -11,7 +11,7 @@ const trustLogos = [
       <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">{{ $t('logos.title') }}</p>
     </div>
     <div class="overflow-hidden w-full">
-    <div class="flex w-[200%] animate-scroll-left opacity-30 hover:opacity-100 transition-opacity duration-500">
+    <div class="flex w-[200%] animate-scroll-left opacity-30 hover:opacity-100 transition-opacity duration-500" style="will-change: transform;">
       <div class="w-1/2 flex justify-around items-center px-4">
         <span v-for="(logo, i) in trustLogos.slice(0, 7)" :key="i" class="text-xl font-bold font-serif text-slate-400 brightness-75 hover:brightness-100 transition-all">{{ logo }}</span>
       </div>

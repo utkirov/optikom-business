@@ -52,11 +52,9 @@ const stats = computed(() => [
 
         <ScrollFade direction="left" class="lg:w-1/2 w-full">
           <div class="relative bg-gray-900/40 rounded-[2.5rem] p-3 border border-indigo-500/20 backdrop-blur-sm shadow-2xl overflow-hidden aspect-video group">
-            <!-- Map loading skeleton -->
             <div v-if="!mapLoaded" class="absolute inset-0 bg-gray-900/80 flex items-center justify-center z-10">
               <div class="w-10 h-10 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
             </div>
-            <!-- Actual Map Iframe with Subdued Dark Overlay -->
             <div class="absolute inset-0 opacity-80 group-hover:opacity-100 transition-all duration-700 pointer-events-auto">
                <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.589882200508!2d69.28258287659556!3d41.331454699569654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b50e7b4e339%3A0x6bba3bc3f136696b!2zMTI3INC60LLQsDRQsCwgQXNzaWJvZWwgU3RyZWV0LCBUYXNoa2VudCwgVXpiZWtpc3Rhbg!5e0!3m2!1sen!2s!4v1710475000000!5m2!1sen!2s"
@@ -70,11 +68,8 @@ const stats = computed(() => [
               ></iframe>
             </div>
             
-            <!-- Map Overlay Effects -->
             <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"></div>
             <div class="absolute inset-0 pointer-events-none border-[12px] border-gray-900/50 rounded-[2.5rem]"></div>
-            
-            <!-- Branded Marker Overlay -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div class="relative flex flex-col items-center">
                 <div class="absolute w-24 h-24 bg-indigo-500/20 rounded-full animate-ping"></div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from '#app'
+import { PhShieldCheck, PhLock, PhWarningCircle, PhCircleNotch } from '@phosphor-icons/vue'
 
 definePageMeta({ layout: 'admin', middleware: 'admin' })
 

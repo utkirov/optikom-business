@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { PhLayout, PhGear, PhKey, PhMagnifyingGlass, PhGlobe as PhGlobeIcon, PhLock } from '@phosphor-icons/vue'
+import { PhLayout, PhGear, PhKey, PhMagnifyingGlass, PhGlobe as PhGlobeIcon, PhLock, PhShieldCheck, PhArrowRight } from '@phosphor-icons/vue'
 
 definePageMeta({ layout: 'admin', middleware: 'admin' })
 

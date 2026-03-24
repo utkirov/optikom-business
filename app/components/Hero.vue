@@ -10,21 +10,18 @@ const { settings } = storeToRefs(store)
 
 <template>
   <header class="relative pt-32 pb-48 bg-indigo-950 overflow-hidden bg-vertical-rays">
-    <!-- Glow effects -->
     <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/30 rounded-full blur-[120px] pointer-events-none animate-pulse-glow"></div>
     <div class="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-indigo-500/20 rounded-full blur-[150px] pointer-events-none"></div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center pt-10">
       
       <ScrollFade>
-        <!-- Top Badge -->
         <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-indigo-900/50 border border-indigo-500/30 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-8 backdrop-blur-sm shadow-xl mx-auto">
           <span>{{ $t('hero.badge') || 'Управляемые IT и телеком решения' }}</span>
         </div>
       </ScrollFade>
 
       <ScrollFade :delay="100">
-        <!-- Main Headline -->
         <div class="text-center max-w-5xl mb-12 relative z-10 w-full">
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-sans font-bold text-white mb-6 tracking-tight leading-[1.1]">
             <span v-html="$t('hero.title')"></span>
@@ -44,7 +41,6 @@ const { settings } = storeToRefs(store)
         </div>
       </ScrollFade>
 
-      <!-- Floating Decorative Elements -->
       <div class="absolute left-4 lg:left-6 top-40 px-5 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl animate-float z-10 hidden md:block">
         <div class="flex items-center space-x-3">
           <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center"><PhTreeStructure class="w-4 h-4 text-white" /></div>
@@ -96,7 +92,6 @@ const { settings } = storeToRefs(store)
       </div>
     </div>
     
-    <!-- Bottom Diagonal Transition Curve -->
     <div class="absolute bottom-[-2px] left-0 w-full overflow-hidden leading-[0]">
       <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-24 sm:h-32 translate-y-1">
           <path d="M1200 0L0 120V120H1200V0Z" class="fill-gray-950"></path>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter, useCookie } from '#app'
 import { computed } from 'vue'
+import { PhShieldCheck, PhArrowSquareOut, PhSignOut } from '@phosphor-icons/vue'
 
 const router = useRouter()
 const loggedInFlag = useCookie('admin_logged_in')

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PhGear, PhGlobe, PhHardDrive, PhShieldCheck, PhInfinity } from '@phosphor-icons/vue'
+import { computed } from 'vue'
 import ScrollFade from './ScrollFade.vue'
 import { useI18n } from '#imports'
 
@@ -23,7 +24,6 @@ const connectionSteps = computed(() => tm('process.steps') as any[])
         </ScrollFade>
       </div>
 
-      <!-- Equipment Specs Row -->
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-20 px-4">
         <ScrollFade :delay="100" class="flex flex-col items-center group">
           <div class="flex flex-col items-center">
@@ -73,7 +73,6 @@ const connectionSteps = computed(() => tm('process.steps') as any[])
       </div>
 
       <div class="relative">
-        <!-- Connecting Line -->
         <div class="hidden lg:block absolute top-10 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
