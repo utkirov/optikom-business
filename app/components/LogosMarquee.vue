@@ -1,7 +1,26 @@
 <script setup lang="ts">
-const trustLogos = [
-  'Salam School', 'Durable Beton', 'Nest One', 'Ozguven', 'Grand Pharm', 'Mercedes Benz', 'PDP University', 'Jetour', 'Tayota', 'Land House', 'China House',
-  'Salam School', 'Durable Beton', 'Nest One', 'Ozguven', 'Grand Pharm', 'Mercedes Benz', 'PDP University', 'Jetour', 'Tayota', 'Land House', 'China House'
+interface LogoItem {
+  name: string
+  image: string
+}
+
+const trustLogos: LogoItem[] = [
+  { name: 'Salam School', image: '/images/logos/salam.png' },
+  { name: 'Durable Beton', image: '/images/logos/durable.PNG' },
+  { name: 'Nest One', image: '/images/logos/nestone.png' },
+  { name: 'Ozguven', image: '/images/logos/ozguven.png' },
+  { name: 'Grand Pharm', image: '/images/logos/grandpharm.png' },
+  { name: 'PDP University', image: '/images/logos/pdp.png' },
+  { name: 'Land House', image: '/images/logos/land.png' },
+  { name: 'Jetour', image: '/images/logos/jetour.png' },
+  { name: 'Salam School', image: '/images/logos/salam.png' },
+  { name: 'Durable Beton', image: '/images/logos/durable.PNG' },
+  { name: 'Nest One', image: '/images/logos/nestone.png' },
+  { name: 'Ozguven', image: '/images/logos/ozguven.png' },
+  { name: 'Grand Pharm', image: '/images/logos/grandpharm.png' },
+  { name: 'PDP University', image: '/images/logos/pdp.png' },
+  { name: 'Land House', image: '/images/logos/land.png' },
+  { name: 'Jetour', image: '/images/logos/jetour.png' }
 ]
 </script>
 
@@ -11,12 +30,12 @@ const trustLogos = [
       <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">{{ $t('logos.title') }}</p>
     </div>
     <div class="overflow-hidden w-full">
-    <div class="flex w-[200%] animate-scroll-left opacity-30 hover:opacity-100 transition-opacity duration-500" style="will-change: transform;">
-      <div class="w-1/2 flex justify-around items-center px-4">
-        <span v-for="(logo, i) in trustLogos.slice(0, 7)" :key="i" class="text-xl font-bold font-serif text-slate-400 brightness-75 hover:brightness-100 transition-all">{{ logo }}</span>
+    <div class="flex w-[200%] animate-scroll-left opacity-50 hover:opacity-100 transition-opacity duration-500" style="will-change: transform;">
+      <div class="w-1/2 flex justify-around items-center px-4 gap-8">
+        <img v-for="(logo, i) in trustLogos.slice(0, 8)" :key="i" :src="logo.image" :alt="logo.name" class="h-14 object-contain brightness-75 hover:brightness-100 transition-all duration-300" />
       </div>
-      <div class="w-1/2 flex justify-around items-center px-4">
-        <span v-for="(logo, i) in trustLogos.slice(7)" :key="i" class="text-xl font-bold font-serif text-slate-400 brightness-75 hover:brightness-100 transition-all">{{ logo }}</span>
+      <div class="w-1/2 flex justify-around items-center px-4 gap-8">
+        <img v-for="(logo, i) in trustLogos.slice(8)" :key="i" :src="logo.image" :alt="logo.name" class="h-14 object-contain brightness-75 hover:brightness-100 transition-all duration-300" />
       </div>
     </div>
     </div>
