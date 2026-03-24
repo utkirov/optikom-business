@@ -187,20 +187,20 @@
         "desc": "Budjetingizga mos ravishda optimallashtiramiz"
       },
       "transit": {
-        "title": "IP Transit",
-        "desc": "Global bog'lanish"
+        "title": "Biznes uchun internet",
+        "desc": "Ishonchli ulanish va yuqori tezlik"
       },
       "hardware": {
-        "title": "Enterprise HW",
-        "desc": "Cisco, Juniper, Mikrotik"
+        "title": "IT xizmat",
+        "desc": "Infratuzilma va foydalanuvchilarni qo'llab-quvvatlash"
       },
       "security": {
         "title": "Xavfsizlik",
         "desc": "L3-L7 trafik himoyasi"
       },
       "support": {
-        "title": "Qo'llab-quvvatlash",
-        "desc": "Biz har doim aloqadamiz"
+        "title": "24/7 qo'llab-quvvatlash",
+        "desc": "Muhandislar monitoringi va yordami"
       }
     },
     "steps": [

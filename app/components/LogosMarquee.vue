@@ -13,6 +13,7 @@ const trustLogos: LogoItem[] = [
   { name: 'PDP University', image: '/images/logos/pdp.png' },
   { name: 'Land House', image: '/images/logos/land.png' },
   { name: 'Jetour', image: '/images/logos/jetour.png' },
+  { name: 'BTS', image: '/images/logos/bts.png' },
   { name: 'Salam School', image: '/images/logos/salam.png' },
   { name: 'Durable Beton', image: '/images/logos/durable.PNG' },
   { name: 'Nest One', image: '/images/logos/nestone.png' },
@@ -20,7 +21,8 @@ const trustLogos: LogoItem[] = [
   { name: 'Grand Pharm', image: '/images/logos/grandpharm.png' },
   { name: 'PDP University', image: '/images/logos/pdp.png' },
   { name: 'Land House', image: '/images/logos/land.png' },
-  { name: 'Jetour', image: '/images/logos/jetour.png' }
+  { name: 'Jetour', image: '/images/logos/jetour.png' },
+  { name: 'BTS', image: '/images/logos/bts.png' }
 ]
 </script>
 
@@ -32,10 +34,10 @@ const trustLogos: LogoItem[] = [
     <div class="overflow-hidden w-full">
       <div class="flex min-w-max animate-scroll-left opacity-50 hover:opacity-100 transition-opacity duration-500" style="will-change: transform;">
         <div class="flex items-center gap-12 px-6">
-          <img v-for="(logo, i) in trustLogos.slice(0, 8)" :key="i" :src="logo.image" :alt="logo.name" class="h-[24px] max-w-[100px] object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
+          <img v-for="(logo, i) in trustLogos.slice(0, 9)" :key="i" :src="logo.image" :alt="logo.name" class="h-[24px] max-w-[100px] object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
         </div>
         <div class="flex items-center gap-12 px-6">
-          <img v-for="(logo, i) in trustLogos.slice(8)" :key="i" :src="logo.image" :alt="logo.name" class="h-[24px] max-w-[100px] object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
+          <img v-for="(logo, i) in trustLogos.slice(9)" :key="i" :src="logo.image" :alt="logo.name" class="h-[24px] max-w-[100px] object-contain brightness-75 hover:brightness-100 transition-all duration-300 flex-shrink-0" />
         </div>
       </div>
     </div>

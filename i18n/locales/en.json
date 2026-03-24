@@ -187,20 +187,20 @@
         "desc": "Optimizing for your budget"
       },
       "transit": {
-        "title": "IP Transit",
-        "desc": "Global connectivity"
+        "title": "Business Internet",
+        "desc": "Reliable connection and high speed"
       },
       "hardware": {
-        "title": "Enterprise HW",
-        "desc": "Cisco, Juniper, Mikrotik"
+        "title": "IT Service",
+        "desc": "Infrastructure and user support"
       },
       "security": {
         "title": "Security",
         "desc": "L3-L7 traffic protection"
       },
       "support": {
-        "title": "Support",
-        "desc": "We are always in touch"
+        "title": "Support 24/7",
+        "desc": "Monitoring and engineer assistance"
       }
     },
     "steps": [
