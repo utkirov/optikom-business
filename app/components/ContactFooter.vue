@@ -31,14 +31,18 @@ const downloadCP = () => {
     for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i)
     const blob = new Blob([bytes], { type: 'application/pdf' })
     const url = URL.createObjectURL(blob)
-    const link = document.createElement('a')
-    link.href = url
-    link.download = cpFile.value.name || 'proposal.pdf'
-    link.target = '_blank'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    setTimeout(() => URL.revokeObjectURL(url), 1000)
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    if (isMobile) {
+      window.open(url, '_blank')
+    } else {
+      const link = document.createElement('a')
+      link.href = url
+      link.download = cpFile.value.name || 'proposal.pdf'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+    setTimeout(() => URL.revokeObjectURL(url), 5000)
   } catch {
     window.open(`data:application/pdf;base64,${cpFile.value.data}`, '_blank')
   }

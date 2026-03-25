@@ -24,7 +24,9 @@ const { settings } = storeToRefs(store)
 type SpeedOption = { id: string, label: string, basePrice: number, isPopular: boolean }
 const speeds = computed<SpeedOption[]>(() => settings.value?.tariffs?.internetSpeeds || [])
 
-const services = computed(() => settings.value?.tariffs?.extraServices || [])
+const services = computed(() =>
+  (settings.value?.tariffs?.extraServices || []).filter((s: any) => s.id !== 'backup_server' && s.id !== 'itServiceBackup')
+)
 
 const IconMap: Record<string, any> = { 
   Server: PhDesktop, 
