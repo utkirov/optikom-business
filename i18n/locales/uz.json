@@ -74,7 +74,7 @@
     }
   },
   "logos": {
-    "title": "Korporatsiyalar va kichik biznes bizga ishonadi"
+    "title": "Korporatsiyalar va kichik bizneslar bizga ishonadi"
   },
   "sla": {
     "title": "Xizmat ko'rsatish nimani qamrab oladi?",
@@ -288,7 +288,8 @@
         "title": "Videokuzatuv sozlamalari",
         "desc": "Aniq hisob-kitob uchun kameralar sonini ko'rsating",
         "install": "O'rnatish (bir marta)",
-        "maint": "Xizmat ko'rsatish (oyiga)"
+        "maint": "Xizmat ko'rsatish (oyiga)",
+        "individual": "Individual narx"
       }
     },
     "sum": {

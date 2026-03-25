@@ -30,7 +30,7 @@ const connectionSteps = computed(() => tm('process.steps') as any[])
             <div class="w-16 h-16 bg-indigo-500/10 rounded-2xl flex items-center justify-center border border-indigo-500/20 mb-4 shadow-lg shadow-indigo-500/10">
               <PhGear class="w-8 h-8 text-indigo-400 animate-spin-slow" />
             </div>
-            <span class="font-bold text-white text-lg tracking-tight">{{ $t('process.features.solutions.title') }}</span>
+            <span class="font-bold text-white text-lg tracking-tight text-center">{{ $t('process.features.solutions.title') }}</span>
             <p class="text-xs text-slate-500 mt-1 max-w-[120px] text-center">{{ $t('process.features.solutions.desc') }}</p>
           </div>
         </ScrollFade>
@@ -39,7 +39,7 @@ const connectionSteps = computed(() => tm('process.steps') as any[])
             <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 mb-4">
               <PhGlobe class="w-8 h-8 text-slate-400 group-hover:text-indigo-400 transition-colors" />
             </div>
-            <span class="font-bold text-white text-lg tracking-tight">{{ $t('process.features.transit.title') }}</span>
+            <span class="font-bold text-white text-lg tracking-tight text-center">{{ $t('process.features.transit.title') }}</span>
             <p class="text-xs text-slate-500 mt-1 max-w-[120px] text-center">{{ $t('process.features.transit.desc') }}</p>
           </div>
         </ScrollFade>
@@ -48,7 +48,7 @@ const connectionSteps = computed(() => tm('process.steps') as any[])
             <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 mb-4">
               <PhHardDrive class="w-8 h-8 text-slate-400 group-hover:text-indigo-400 transition-colors" />
             </div>
-            <span class="font-bold text-white text-lg tracking-tight">{{ $t('process.features.hardware.title') }}</span>
+            <span class="font-bold text-white text-lg tracking-tight text-center">{{ $t('process.features.hardware.title') }}</span>
             <p class="text-xs text-slate-500 mt-1 max-w-[120px] text-center">{{ $t('process.features.hardware.desc') }}</p>
           </div>
         </ScrollFade>
@@ -57,16 +57,16 @@ const connectionSteps = computed(() => tm('process.steps') as any[])
             <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 mb-4">
               <PhShieldCheck class="w-8 h-8 text-slate-400 group-hover:text-indigo-400 transition-colors" />
             </div>
-            <span class="font-bold text-white text-lg tracking-tight">{{ $t('process.features.security.title') }}</span>
+            <span class="font-bold text-white text-lg tracking-tight text-center">{{ $t('process.features.security.title') }}</span>
             <p class="text-xs text-slate-500 mt-1 max-w-[120px] text-center">{{ $t('process.features.security.desc') }}</p>
           </div>
         </ScrollFade>
-        <ScrollFade :delay="500" class="flex flex-col items-center group">
+        <ScrollFade :delay="500" class="flex flex-col items-center group col-span-2 md:col-span-1">
           <div class="flex flex-col items-center">
             <div class="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 mb-4">
               <PhInfinity class="w-8 h-8 text-slate-400 group-hover:text-indigo-400 transition-colors" />
             </div>
-            <span class="font-bold text-white text-lg tracking-tight">{{ $t('process.features.support.title') }}</span>
+            <span class="font-bold text-white text-lg tracking-tight text-center">{{ $t('process.features.support.title') }}</span>
             <p class="text-xs text-slate-500 mt-1 max-w-[120px] text-center">{{ $t('process.features.support.desc') }}</p>
           </div>
         </ScrollFade>

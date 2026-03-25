@@ -16,7 +16,6 @@ export const defaultSettings = {
     slaPremiumMargin: 20,
     extraServices: [
        { id: 'cctv', label: 'Видеонаблюдение', price: 500000, icon: 'Monitor' },
-       { id: 'backup', label: 'Бэкап серверов', price: 300000, icon: 'Server' },
        { id: 'backup_channel', label: 'Резервный канал', price: 800000, icon: 'Wifi' },
     ]
   },

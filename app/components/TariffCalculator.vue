@@ -71,8 +71,18 @@ const slaCost = computed(() => {
 
 // Video Surveillance specifically
 const isVideoSelected = computed(() => selectedServices.value.includes('cctv'))
-const videoInstallationCost = computed(() => isVideoSelected.value ? cameraCount.value * 200000 : 0)
-const videoMaintenanceCost = computed(() => isVideoSelected.value ? cameraCount.value * 20000 : 0)
+const videoInstallationCost = computed(() => isVideoSelected.value ? 250000 : 0)
+const cameraMaintenanceRate = computed(() => {
+  if (cameraCount.value <= 8) return 25000
+  if (cameraCount.value <= 16) return 21000
+  if (cameraCount.value <= 32) return 18000
+  return 0 // individual pricing
+})
+const isIndividualCameraPricing = computed(() => isVideoSelected.value && cameraCount.value > 32)
+const videoMaintenanceCost = computed(() => {
+  if (!isVideoSelected.value || cameraCount.value > 32) return 0
+  return cameraCount.value * cameraMaintenanceRate.value
+})
 
 const extraServicesCost = computed(() => {
   return services.value
@@ -283,7 +293,8 @@ const saveAndScrollToForm = (e: Event) => {
                       </div>
                       <div class="p-4 bg-black/20 rounded-xl border border-white/5">
                         <span class="block text-[10px] text-slate-500 uppercase font-black mb-1">{{ $t('calc.extra.cctv.maint') }}</span>
-                        <span class="text-white font-bold">{{ formatPrice(videoMaintenanceCost) }} {{ $t('calc.sum.currency_unit') }}</span>
+                        <span v-if="isIndividualCameraPricing" class="text-indigo-400 font-bold text-sm">{{ $t('calc.extra.cctv.individual') }}</span>
+                        <span v-else class="text-white font-bold">{{ formatPrice(videoMaintenanceCost) }} {{ $t('calc.sum.currency_unit') }}</span>
                       </div>
                     </div>
                   </div>
@@ -330,11 +341,14 @@ const saveAndScrollToForm = (e: Event) => {
                     <div class="font-bold text-slate-200 text-sm">{{ formatPrice(totalItCost) }} <span class="text-[10px] text-slate-500 font-medium italic">{{ $t('calc.sum.currency_unit') }}</span></div>
                   </div>
 
-                  <div v-if="videoMaintenanceCost > 0" class="flex justify-between items-end border-b border-white/5 pb-2 ml-1">
+                  <div v-if="isVideoSelected" class="flex justify-between items-end border-b border-white/5 pb-2 ml-1">
                     <div>
                       <span class="block text-slate-500 text-xs font-medium mb-1">{{ $t('calc.sum.cctv_maint') }} ({{ cameraCount }} {{ $t('calc.camera.unit') }})</span>
                     </div>
-                    <div class="font-bold text-slate-200 text-sm">{{ formatPrice(videoMaintenanceCost) }} <span class="text-[10px] text-slate-500 font-medium italic">{{ $t('calc.sum.currency_unit') }}</span></div>
+                    <div class="font-bold text-slate-200 text-sm">
+                      <span v-if="isIndividualCameraPricing" class="text-indigo-400">{{ $t('calc.extra.cctv.individual') }}</span>
+                      <template v-else>{{ formatPrice(videoMaintenanceCost) }} <span class="text-[10px] text-slate-500 font-medium italic">{{ $t('calc.sum.currency_unit') }}</span></template>
+                    </div>
                   </div>
 
                   <div v-if="extraServicesCost > 0" class="flex justify-between items-end border-b border-white/5 pb-2 ml-1">

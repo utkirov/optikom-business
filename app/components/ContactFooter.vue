@@ -25,10 +25,23 @@ const cpFile = ref<{ data: string, name: string } | null>(null)
 
 const downloadCP = () => {
   if (!cpFile.value) return
-  const link = document.createElement('a')
-  link.href = `data:application/pdf;base64,${cpFile.value.data}`
-  link.download = cpFile.value.name
-  link.click()
+  try {
+    const binary = atob(cpFile.value.data)
+    const bytes = new Uint8Array(binary.length)
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i)
+    const blob = new Blob([bytes], { type: 'application/pdf' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = cpFile.value.name || 'proposal.pdf'
+    link.target = '_blank'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    setTimeout(() => URL.revokeObjectURL(url), 1000)
+  } catch {
+    window.open(`data:application/pdf;base64,${cpFile.value.data}`, '_blank')
+  }
 }
 
 const handlePhoneInput = (e: Event) => {

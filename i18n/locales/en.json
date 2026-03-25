@@ -288,7 +288,8 @@
         "title": "CCTV setup",
         "desc": "Specify the number of cameras for accurate calculation",
         "install": "Installation (one-time)",
-        "maint": "Maintenance (month)"
+        "maint": "Maintenance (month)",
+        "individual": "Individual pricing"
       }
     },
     "sum": {
