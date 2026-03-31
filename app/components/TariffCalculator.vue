@@ -25,7 +25,7 @@ type SpeedOption = { id: string, label: string, basePrice: number, isPopular: bo
 const speeds = computed<SpeedOption[]>(() => settings.value?.tariffs?.internetSpeeds || [])
 
 const services = computed(() =>
-  (settings.value?.tariffs?.extraServices || []).filter((s: any) => s.id !== 'backup_server' && s.id !== 'itServiceBackup')
+  (settings.value?.tariffs?.extraServices || []).filter((s: any) => !['backup', 'backup_server', 'itServiceBackup'].includes(s.id))
 )
 
 const IconMap: Record<string, any> = { 
@@ -423,7 +423,7 @@ const saveAndScrollToForm = (e: Event) => {
             <div class="md:w-1/2 text-center md:text-left relative z-10 w-full">
                <div class="inline-block px-3 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded text-xs font-bold mb-4 tracking-wide uppercase">{{ $t('calc.compare.badge_standard') }}</div>
                <h4 class="text-2xl font-bold text-slate-500 mb-2">{{ $t('calc.compare.title_standard') }}</h4>
-               <div class="text-4xl font-extrabold text-slate-600 line-through decoration-red-500/50 decoration-4">7–10 млн {{ $t('calc.sum.currency_unit') }}</div>
+               <div class="text-4xl font-extrabold text-slate-600 line-through decoration-red-500/50 decoration-4">{{ $t('calc.compare.standard_price') }} {{ $t('calc.sum.currency_unit') }}</div>
                <p class="text-slate-500 mt-4 text-sm font-medium">{{ $t('calc.compare.desc_standard') }}</p>
             </div>
 
@@ -434,7 +434,7 @@ const saveAndScrollToForm = (e: Event) => {
             <div class="md:w-1/2 text-center md:text-right relative z-10 w-full">
                <div class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded text-xs font-bold mb-4 tracking-wide uppercase">{{ $t('calc.compare.badge_modern') }}</div>
                <h4 class="text-2xl font-bold text-white mb-2">{{ $t('calc.compare.title_modern') }}</h4>
-               <div class="text-4xl font-extrabold text-indigo-400">от 2 млн {{ $t('calc.sum.currency_unit') }}</div>
+               <div class="text-4xl font-extrabold text-indigo-400">{{ $t('calc.compare.modern_price') }} {{ $t('calc.sum.currency_unit') }}</div>
                <p class="text-slate-400 mt-4 text-sm font-medium">{{ $t('calc.compare.desc_modern') }}</p>
             </div>
 

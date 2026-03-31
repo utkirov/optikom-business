@@ -318,7 +318,9 @@
       "title_modern": "Optikom autsorsingi",
       "desc_modern": "Muhandislarning butun jamoasi, shaffof mas'uliyat hududi, kasallik ta'tilisiz 24/7 ishlash.",
       "benefit": "70% gacha foyda",
-      "sale_prefix": "Gacha"
+      "sale_prefix": "Gacha",
+      "standard_price": "7–10 mln",
+      "modern_price": "2 mln dan"
     }
   },
   "privacy": {

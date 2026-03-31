@@ -318,7 +318,9 @@
       "title_modern": "Аутсорс от Optikom",
       "desc_modern": "Целая команда инженеров, прозрачная зона ответственности, работа 24/7 без больничных.",
       "benefit": "Выгода до 70%",
-      "sale_prefix": "До"
+      "sale_prefix": "До",
+      "standard_price": "7–10 млн",
+      "modern_price": "от 2 млн"
     }
   },
   "privacy": {

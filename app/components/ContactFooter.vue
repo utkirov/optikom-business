@@ -86,8 +86,7 @@ const submitForm = async () => {
   if (savedData) {
     try {
       form.value.tariffDetails = JSON.parse(savedData)
-    } catch (e) {
-      console.warn('Calculating tariff data failed to parse:', e)
+    } catch {
     }
   }
 

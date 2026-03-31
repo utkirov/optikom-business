@@ -318,7 +318,9 @@
       "title_modern": "Outsource from Optikom",
       "desc_modern": "A whole team of engineers, transparent area of responsibility, 24/7 work without sick days.",
       "benefit": "Benefit up to 70%",
-      "sale_prefix": "Up to"
+      "sale_prefix": "Up to",
+      "standard_price": "7–10 mln",
+      "modern_price": "from 2 mln"
     }
   },
   "privacy": {
