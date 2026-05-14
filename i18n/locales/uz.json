@@ -151,7 +151,7 @@
       "phone_error": "Iltimos, to'liq telefon raqamini kiriting",
       "pdf_download": "Tijorat taklifini yuklab olish (PDF)"
     },
-    "address": "Toshkent sh., Shota Rustaveli ko'ch., 1-o'tish yo'li, 6",
+    "address": "Toshkent sh., Yakkasaray tumani, Bashlyk ko'ch. 8G, 7-qavat",
     "copyright": "© 2026 OPTIKOM BUSINESS. Barcha huquqlar himoyalangan."
   },
   "faqs": {
@@ -244,7 +244,7 @@
       "sla": "Tarmoq barqarorligi",
       "zap": "Javob berish vaqti"
     },
-    "location": "Toshkent sh., O'zbekiston",
+    "location": "Toshkent sh., Yakkasaray tumani, Bashlyk 8G",
     "hq_label": "Optikom Bosh ofisi",
     "status": {
       "active": "Tarmoq faol",
@@ -320,7 +320,7 @@
       "benefit": "70% gacha foyda",
       "sale_prefix": "Gacha",
       "standard_price": "7–10 mln",
-      "modern_price": "2 mln dan"
+      "modern_price": "2 mln so'mdan"
     }
   },
   "privacy": {

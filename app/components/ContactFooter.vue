@@ -122,11 +122,8 @@ const submitForm = async () => {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
         <ScrollFade direction="right">
           <div>
-            <div class="flex items-center space-x-2 group cursor-pointer mb-8">
-              <div class="p-1.5 bg-indigo-500 rounded-lg group-hover:scale-110 transition-transform">
-                <PhWifiHigh class="w-5 h-5 text-white" />
-              </div>
-              <span class="text-xl font-bold tracking-tight text-white group-hover:text-indigo-400 transition-colors">Optikom<span class="text-indigo-500">.Biz</span></span>
+            <div class="flex items-center mb-8">
+              <img src="/logo.svg" alt="Optikom" class="h-9 w-auto" />
             </div>
             
             <h2 class="text-4xl font-bold text-white mb-6">{{ $t('contact.title') }}</h2>

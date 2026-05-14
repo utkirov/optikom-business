@@ -57,7 +57,7 @@ const stats = computed(() => [
             </div>
             <div class="absolute inset-0 opacity-80 group-hover:opacity-100 transition-all duration-700 pointer-events-auto">
                <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.589882200508!2d69.28258287659556!3d41.331454699569654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b50e7b4e339%3A0x6bba3bc3f136696b!2zMTI3INC60LLQsDRQsCwgQXNzaWJvZWwgU3RyZWV0LCBUYXNoa2VudCwgVXpiZWtpc3Rhbg!5e0!3m2!1sen!2s!4v1710475000000!5m2!1sen!2s"
+                src="https://maps.google.com/maps?q=Bashlyk+8G,+Yakkasaray+district,+Tashkent,+Uzbekistan&output=embed"
                 width="100%"
                 height="100%"
                 style="border:0; filter: contrast(1.1) brightness(0.7) saturate(0.5);"

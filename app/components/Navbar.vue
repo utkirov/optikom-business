@@ -17,11 +17,8 @@ const showLangMenu = ref(false)
     <nav class="fixed top-0 w-full z-50 transition-all duration-300"
          :class="isScrolled ? 'bg-indigo-950/90 backdrop-blur-lg shadow-xl py-4 border-b border-indigo-500/20' : 'bg-transparent pt-6 pb-4'">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <div class="p-1.5 bg-indigo-500 rounded-lg shadow-lg shadow-indigo-500/20">
-            <PhWifiHigh class="w-5 h-5 text-white" />
-          </div>
-          <span class="text-xl font-bold tracking-tight text-white">Optikom<span class="text-indigo-500">.Biz</span></span>
+        <div class="flex items-center">
+          <img src="/logo.svg" alt="Optikom" class="h-9 w-auto" />
         </div>
         
         <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">

@@ -434,7 +434,7 @@ const saveAndScrollToForm = (e: Event) => {
             <div class="md:w-1/2 text-center md:text-right relative z-10 w-full">
                <div class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded text-xs font-bold mb-4 tracking-wide uppercase">{{ $t('calc.compare.badge_modern') }}</div>
                <h4 class="text-2xl font-bold text-white mb-2">{{ $t('calc.compare.title_modern') }}</h4>
-               <div class="text-4xl font-extrabold text-indigo-400">{{ $t('calc.compare.modern_price') }} {{ $t('calc.sum.currency_unit') }}</div>
+               <div class="text-4xl font-extrabold text-indigo-400">{{ $t('calc.compare.modern_price') }}</div>
                <p class="text-slate-400 mt-4 text-sm font-medium">{{ $t('calc.compare.desc_modern') }}</p>
             </div>
 

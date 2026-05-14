@@ -20,8 +20,8 @@ export const defaultSettings = {
     ]
   },
   contacts: {
-    phone: '+998 (71) 000-00-00',
-    address: 'Ташкент, Узбекистан',
+    phone: '+998 (78) 777-94-44',
+    address: 'Яккасарайский р-н, Башлык 8Г, 7 этаж',
     email: 'info@optikom.biz'
   },
   social: {

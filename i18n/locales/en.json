@@ -151,7 +151,7 @@
       "phone_error": "Please enter a complete phone number",
       "pdf_download": "Download commercial proposal (PDF)"
     },
-    "address": "Tashkent city, Shota Rustaveli str., 1st pass., 6",
+    "address": "Tashkent, Yakkasaray district, Bashlyk str. 8G, 7th floor",
     "copyright": "© 2026 OPTIKOM BUSINESS. All rights reserved."
   },
   "faqs": {
@@ -244,7 +244,7 @@
       "sla": "Network availability",
       "zap": "Reaction time"
     },
-    "location": "Tashkent, Uzbekistan",
+    "location": "Tashkent, Yakkasaray district, Bashlyk 8G",
     "hq_label": "Optikom Head Office",
     "status": {
       "active": "Network active",
@@ -320,7 +320,7 @@
       "benefit": "Benefit up to 70%",
       "sale_prefix": "Up to",
       "standard_price": "7–10 mln",
-      "modern_price": "from 2 mln"
+      "modern_price": "from 2 mln sum"
     }
   },
   "privacy": {

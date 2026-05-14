@@ -137,9 +137,9 @@ export async function generateCP(data: CPData): Promise<Buffer> {
         doc.fontSize(10).font(fontRegular).fillColor(primaryColor).text(t.title, 40, 70)
 
         doc.fillColor(textMuted).fontSize(9)
-           .text('+998 (71) 200-02-02', 400, 45, { align: 'right', width: 155 })
+           .text('+998 (78) 777-94-44', 400, 45, { align: 'right', width: 155 })
            .text('www.optikom.biz', 400, 60, { align: 'right', width: 155 })
-           .text('Tashkent, Uzbekistan', 400, 75, { align: 'right', width: 155 })
+           .text('Yakkasaray, Bashlyk 8G, 7th fl.', 400, 75, { align: 'right', width: 155 })
 
         // 3. Client Card
         let currentY = 130
@@ -206,7 +206,7 @@ export async function generateCP(data: CPData): Promise<Buffer> {
         doc.fillColor(textWhite).font(fontBold).fontSize(11).text(t.manager, 40, footerY)
         doc.fillColor(primaryColor).font(fontBold).fontSize(13).text('Abbos Rustamov', 40, footerY + 20)
         doc.fillColor(textMuted).font(fontRegular).fontSize(10).text(t.managerRole, 40, footerY + 40)
-        doc.fillColor(textWhite).font(fontRegular).fontSize(10).text('E: info@optikom.biz | T: +998 (71) 200-02-02', 40, footerY + 55)
+        doc.fillColor(textWhite).font(fontRegular).fontSize(10).text('E: info@optikom.biz | T: +998 (78) 777-94-44', 40, footerY + 55)
 
         doc.fillColor(textMuted).font(fontRegular).fontSize(8).text(t.disclaimer, 40, 780, { align: 'center', width: 515 })
 
